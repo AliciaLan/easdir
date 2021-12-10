@@ -1,0 +1,29 @@
+{
+    "dossier": [{
+        "id": 1,
+        "name": "Dossier Perso",
+        "child": [{
+            "id": 58,
+            "name": "Fichier1",
+            "type": "text"
+        }, {
+            "id": 59,
+            "name": "Dossier Pro",
+            "type": "dossier"
+        }]
+    }, {
+        "id": 59,
+        "name": "Dossier Pro",
+        "child": []
+    }],
+
+    "text": [{
+        "id": 58,
+        "name": "Fichier1",
+        "contenu": "bonjour"
+    }, {
+        "id": 59,
+        "name": "Fichier2",
+        "contenu": "au revoir"
+    }]
+}
