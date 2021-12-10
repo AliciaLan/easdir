@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'my-prefix-root',
   template: `
     <h1>Bienvenue dans EasDir</h1>
-    <img src="../assets/logo.jpg">
+    <img src="../assets/logo.png">
     <router-outlet></router-outlet>
   `,
   styles: [`
