@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 
+Pour lancer le projet :
+- Se placer à la racine du projet.
+- Lancer `ng serve` dans un terminal.
+- Lancer `json-server db.json` dans un second terminal.
+- Accéder au site dans un navigateur à l'adresse : `http://localhost:4200/`.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
