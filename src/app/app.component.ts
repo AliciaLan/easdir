@@ -4,17 +4,58 @@ import { Component } from '@angular/core';
   selector: 'easdir-root',
   template: `
     <header>
-      <div>
-        <img id="logo" src="../assets/logo.png">
-        <div id="titre">
-          <h1>Bienvenue dans <span id="easdir">EasDir</span></h1>
-          <h3>Votre nouveau gestionnaire de fichier</h3>
-        </div>
+      <img id="logo" src="../assets/logo.png">
+      <div id="titre">
+        <h1>Bienvenue dans <span id="easdir">EasDir</span></h1>
+        <h3>Votre nouveau gestionnaire de fichier</h3>
       </div>
     </header>
 
     <div id="contenu">
-      <router-outlet></router-outlet>
+      <h2>Dossier parent</h2>
+      <div id="elements">
+        <article class="dossier">
+          <img src="../assets/dossier.png">
+          <p>nomedfghjkljhgfdsdfghjnk</p>
+        </article>
+        <article class="text">
+          <img src="../assets/fichier.png">
+          <p>nom</p>
+        </article>
+        <article class="dossier">
+          <img src="../assets/dossier.png">
+          <p>nom</p>
+        </article>
+        <article class="text">
+          <img src="../assets/fichier.png">
+          <p>nom</p>
+        </article>
+        <article class="dossier">
+          <img src="../assets/dossier.png">
+          <p>nom</p>
+        </article>
+        <article class="text">
+          <img src="../assets/fichier.png">
+          <p>nom</p>
+        </article>
+        <article class="dossier">
+          <img src="../assets/dossier.png">
+          <p>nom</p>
+        </article>
+        <article class="text">
+          <img src="../assets/fichier.png">
+          <p>nom</p>
+        </article>
+        <article class="dossier">
+          <img src="../assets/dossier.png">
+          <p>nom</p>
+        </article>
+        <article class="text">
+          <img src="../assets/fichier.png">
+          <p>nom</p>
+        </article>
+        <router-outlet></router-outlet>
+      </div>
     </div>
 
     <footer>
