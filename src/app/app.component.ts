@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-prefix-root',
+  selector: 'easdir-root',
   template: `
     <h1>Bienvenue dans EasDir</h1>
     <img src="../assets/logo.png">
