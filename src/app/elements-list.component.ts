@@ -10,7 +10,7 @@ import { Text } from './text.model';
     <div id="contenu">
       <div id="contenu-titre">
         <h2>Dossier parent</h2>
-        <button id="button-suppr-dossier" type="button">Supprimer le dossier</button>
+        <button id="button-suppr" type="button">Supprimer le dossier</button>
       </div>
 
       <div id="contenu-button">

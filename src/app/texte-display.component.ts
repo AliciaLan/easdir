@@ -6,12 +6,17 @@ import { Text } from './text.model';
 @Component({
   selector: 'easdir-texte-display',
   template: `
-    <button (click)="backToList()">Retour</button>
+  <div id="texte">
+    <div id="texte-button">
+      <button (click)="backToList()">Retour</button>
+      <button id="button-edit" type="button">Modifier le fichier</button>
+      <button id="button-suppr" type="button">Supprimer le fichier</button>
+    </div>
     <h2 id="texte-name">{{ this.texte?.name }}</h2>
     <p id="texte-contenu">{{ this.texte?.contenu }}</p>
+  </div>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class TexteDisplayComponent implements OnInit {
   texte?: Text;
