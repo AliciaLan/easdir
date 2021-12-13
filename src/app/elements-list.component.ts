@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Dossier } from './dossier.model';
 import { EasdirService } from './easdir.service';
 import { Text } from './text.model';
@@ -13,16 +14,16 @@ import { Text } from './text.model';
       </div>
 
       <div id="contenu-button">
-        <button (click)="addDossier()" id="button-add-dossier" type="button">Ajouter un dossier</button>
+        <button id="button-add-dossier" type="button">Ajouter un dossier</button>
         <button id="button-add-text" type="button">Ajouter un fichier texte</button>
       </div>
 
       <div id="contenu-elements">
-        <article *ngFor="let dossier of dossiers" class="dossier">
+        <article *ngFor="let dossier of dossiers$ | async" class="dossier">
           <img src="../assets/dossier.png">
           <p>{{ dossier.name }}</p>
         </article>
-        <article *ngFor="let texte of textes" class="text">
+        <article *ngFor="let texte of textes$ | async" class="text">
           <img src="../assets/fichier.png">
           <p>{{ texte.name }}</p>
         </article>
@@ -33,16 +34,13 @@ import { Text } from './text.model';
   ]
 })
 export class ElementsListComponent implements OnInit {
-  dossiers?: Dossier[] = this.service.getListDossier();
-  textes?: Text[] = this.service.getListTexte();
+  dossiers$: Observable<Dossier[]> = this.service.getListDossier();
+  textes$:  Observable<Text[]> = this.service.getListTexte();
 
-  constructor(private service : EasdirService) { }
-
-  ngOnInit(): void {
+  constructor(private service : EasdirService) {
   }
 
-  addDossier() {
-
+  ngOnInit(): void {
   }
 
 }

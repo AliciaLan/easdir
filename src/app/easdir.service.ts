@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Dossier } from './dossier.model';
 import { IdService } from './id.service';
 import { Text } from './text.model';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EasdirService {
-  dossiers?: Dossier[] = [
-    {id:"1", name:"dossier pro"},
-    {id:"12", name:"dossier perso"},
-    {id:"123", name:"dossier yjdfsfghfsqdbvcds"}
-  ];
-  textes?: Text[] = [
-    {id:"1", name:"fichier pro", contenu:"le fichier 1"},
-    {id:"12", name:"fichier perso", contenu:"le fichier 2"}
-  ];
-  ApiUrl:string = environment.apiUrl + 'contacts/';
+  dossiers$: BehaviorSubject<Dossier[]> = new BehaviorSubject<Dossier[]>([]);
+  textes$: BehaviorSubject<Text[]> = new BehaviorSubject<Text[]>([]);
 
-  constructor(private idService : IdService) { }
+  DossierUrl:string = environment.apiUrl + 'dossier/';
+  TexteUrl:string = environment.apiUrl + 'text/';
+
+  constructor(private idService : IdService, private http: HttpClient) {
+    this.http.get<Dossier[]>(this.DossierUrl)
+      .subscribe(dossiers => {
+        console.log(dossiers);
+        this.dossiers$.next(dossiers);
+      });
+
+    this.http.get<Text[]>(this.TexteUrl)
+      .subscribe(textes => {
+        console.log(textes);
+        this.textes$.next(textes);
+      });
+  }
 
   getListDossier() {
-    return this.dossiers;
+    return this.dossiers$;
   }
 
   getListTexte(){
-    return this.textes;
+    return this.textes$;
   }
 }
