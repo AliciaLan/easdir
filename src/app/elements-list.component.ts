@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Dossier } from './dossier.model';
 import { DossierService } from './dossier.service';
-import { Text } from './text.model';
+import { Texte } from './texte.model';
 import { TexteService } from './texte.service';
 
 @Component({
@@ -39,7 +39,7 @@ import { TexteService } from './texte.service';
 })
 export class ElementsListComponent implements OnInit {
   dossiers$: Observable<Dossier[]> = this.DossierService.getListDossier();
-  textes$: Observable<Text[]> = this.TexteService.getListTexte();
+  textes$: Observable<Texte[]> = this.TexteService.getListTexte();
 
   constructor(private DossierService : DossierService, private TexteService : TexteService) {
   }
