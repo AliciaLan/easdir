@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { EasdirService } from './easdir.service';
 import { Text } from './text.model';
+import { TexteService } from './texte.service';
 
 @Component({
   selector: 'easdir-texte-display',
@@ -21,12 +21,12 @@ import { Text } from './text.model';
 export class TexteDisplayComponent implements OnInit {
   texte?: Text;
 
-  constructor(service: EasdirService, route: ActivatedRoute, private router: Router) {
+  constructor(TexteService: TexteService, route: ActivatedRoute, private router: Router) {
     route.paramMap.subscribe(
       (paramMap: ParamMap) => {
         const id = paramMap.get('texteId');
         if (id) {
-          service.get(id)
+          TexteService.get(id)
             .subscribe(
               texte => this.texte = texte,
               () => router.navigate(['/list'])

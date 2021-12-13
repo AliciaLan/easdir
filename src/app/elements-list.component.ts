@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Dossier } from './dossier.model';
-import { EasdirService } from './easdir.service';
+import { DossierService } from './dossier.service';
 import { Text } from './text.model';
+import { TexteService } from './texte.service';
 
 @Component({
   selector: 'easdir-elements-list',
@@ -37,10 +38,10 @@ import { Text } from './text.model';
   ]
 })
 export class ElementsListComponent implements OnInit {
-  dossiers$: Observable<Dossier[]> = this.service.getListDossier();
-  textes$: Observable<Text[]> = this.service.getListTexte();
+  dossiers$: Observable<Dossier[]> = this.DossierService.getListDossier();
+  textes$: Observable<Text[]> = this.TexteService.getListTexte();
 
-  constructor(private service : EasdirService) {
+  constructor(private DossierService : DossierService, private TexteService : TexteService) {
   }
 
   ngOnInit(): void {
