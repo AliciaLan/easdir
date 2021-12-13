@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Dossier } from './dossier.model';
+import { EasdirService } from './easdir.service';
 import { Text } from './text.model';
 
 @Component({
@@ -12,7 +13,7 @@ import { Text } from './text.model';
       </div>
 
       <div id="contenu-button">
-        <button id="button-add-dossier" type="button">Ajouter un dossier</button>
+        <button (click)="addDossier()" id="button-add-dossier" type="button">Ajouter un dossier</button>
         <button id="button-add-text" type="button">Ajouter un fichier texte</button>
       </div>
 
@@ -32,21 +33,16 @@ import { Text } from './text.model';
   ]
 })
 export class ElementsListComponent implements OnInit {
-  dossiers: Dossier[] = [
-    {id:"1", name:"dossier pro"},
-    {id:"12", name:"dossier perso"},
+  dossiers?: Dossier[] = this.service.getListDossier();
+  textes?: Text[] = this.service.getListTexte();
 
-    {id:"12", name:"dossier yjdfsfghfsqdbvcds"}
-  ]
-
-  textes: Text[] = [
-    {id:"1", name:"fichier pro", contenu:"le fichier 1"},
-    {id:"12", name:"fichier perso", contenu:"le fichier 2"}
-  ]
-
-  constructor() { }
+  constructor(private service : EasdirService) { }
 
   ngOnInit(): void {
+  }
+
+  addDossier() {
+
   }
 
 }
