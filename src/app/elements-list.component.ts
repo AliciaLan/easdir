@@ -23,7 +23,10 @@ import { Text } from './text.model';
           <img src="../assets/dossier.png">
           <p>{{ dossier.name }}</p>
         </article>
-        <article *ngFor="let texte of textes$ | async" class="text">
+        <article
+        *ngFor="let texte of textes$ | async"
+        [routerLink]="['/texte', texte.id]"
+        class="text">
           <img src="../assets/fichier.png">
           <p>{{ texte.name }}</p>
         </article>
@@ -35,7 +38,7 @@ import { Text } from './text.model';
 })
 export class ElementsListComponent implements OnInit {
   dossiers$: Observable<Dossier[]> = this.service.getListDossier();
-  textes$:  Observable<Text[]> = this.service.getListTexte();
+  textes$: Observable<Text[]> = this.service.getListTexte();
 
   constructor(private service : EasdirService) {
   }
