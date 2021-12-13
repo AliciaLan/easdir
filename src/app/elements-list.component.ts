@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Dossier } from './dossier.model';
+import { Text } from './text.model';
 
 @Component({
   selector: 'easdir-elements-list',
@@ -15,29 +17,13 @@ import { Component, OnInit } from '@angular/core';
       </div>
 
       <div id="contenu-elements">
-        <article class="dossier">
+        <article *ngFor="let dossier of dossiers" class="dossier">
           <img src="../assets/dossier.png">
-            <p>nomedfghjkljhgfdsjnk</p>
-          </article>
-        <article class="text">
-          <img src="../assets/fichier.png">
-            <p>nom</p>
+          <p>{{ dossier.name }}</p>
         </article>
-        <article class="text">
+        <article *ngFor="let texte of textes" class="text">
           <img src="../assets/fichier.png">
-            <p>nom</p>
-        </article>
-        <article class="text">
-          <img src="../assets/fichier.png">
-            <p>nom</p>
-        </article>
-        <article class="text">
-          <img src="../assets/fichier.png">
-            <p>nom</p>
-        </article>
-        <article class="text">
-          <img src="../assets/fichier.png">
-            <p>nom</p>
+          <p>{{ texte.name }}</p>
         </article>
       </div>
     </div>
@@ -46,6 +32,17 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class ElementsListComponent implements OnInit {
+  dossiers: Dossier[] = [
+    {id:"1", name:"dossier pro"},
+    {id:"12", name:"dossier perso"},
+
+    {id:"12", name:"dossier yjdfsfghfsqdbvcds"}
+  ]
+
+  textes: Text[] = [
+    {id:"1", name:"fichier pro", contenu:"le fichier 1"},
+    {id:"12", name:"fichier perso", contenu:"le fichier 2"}
+  ]
 
   constructor() { }
 
