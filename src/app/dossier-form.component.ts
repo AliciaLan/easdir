@@ -6,16 +6,14 @@ import { DossierService } from './dossier.service';
 @Component({
   selector: 'easdir-dossier-form',
   template: `
-    <div id="contenu-form-dossier">
+    <article>
       <form (ngSubmit)="submit()" [formGroup]="dossierForm">
-        <div>
-          <label>Nom : </label>
-          <input formControlName="name">
-        </div>
-        <input type="submit" [disabled]="dossierForm.invalid" value="Save">
-        <input type="button" (click)="cancelForm()" value="Cancel">
+        <img src="../assets/dossier.png">
+        <input formControlName="name">
+        <button type="submit" [disabled]="dossierForm.invalid">Ajouter</button>
+        <button type="button" (click)="cancelForm()">Annuler</button>
       </form>
-    </div>
+    </article>
   `,
   styles: ['input.ng-invalid { background: lightcoral }']
 })

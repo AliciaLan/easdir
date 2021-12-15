@@ -19,30 +19,30 @@ import { TexteService } from './texte.service';
         <button (click)="ToggleAddTexteMode()" id="button-add-texte" type="button">Ajouter un fichier texte</button>
       </div>
 
-      <easdir-texte-form
-        *ngIf="this.AddTexteMode"
-        (cancel)="ToggleAddTexteMode()"
-        (save)="saveTexte($event)">
-      </easdir-texte-form>
-
-      <easdir-dossier-form
-        *ngIf="this.AddDossierMode"
-        (cancel)="ToggleAddDossierMode()"
-        (save)="saveDossier($event)">
-      </easdir-dossier-form>
-
       <div id="contenu-elements">
         <article *ngFor="let dossier of dossiers$ | async" class="dossier">
           <img src="../assets/dossier.png">
           <p>{{ dossier.name }}</p>
         </article>
+
+        <easdir-dossier-form
+        *ngIf="this.AddDossierMode"
+        (cancel)="ToggleAddDossierMode()"
+        (save)="saveDossier($event)">
+        </easdir-dossier-form>
+
         <article
           *ngFor="let texte of textes$ | async"
-          [routerLink]="['/texte', texte.id]"
-          class="text">
+          [routerLink]="['/texte', texte.id]">
             <img src="../assets/fichier.png">
             <p>{{ texte.name }}</p>
         </article>
+
+        <easdir-texte-form
+          *ngIf="this.AddTexteMode"
+          (cancel)="ToggleAddTexteMode()"
+          (save)="saveTexte($event)">
+        </easdir-texte-form>
       </div>
     </div>
   `,
@@ -73,13 +73,13 @@ export class ElementsListComponent implements OnInit {
   }
 
   ToggleAddDossierMode(){
+    this.AddTexteMode = false;
     this.AddDossierMode = !this.AddDossierMode;
-    console.log(this.AddDossierMode);
   }
 
   ToggleAddTexteMode(){
+    this.AddDossierMode = false;
     this.AddTexteMode = !this.AddTexteMode;
-    console.log(this.AddTexteMode);
   }
 
 }

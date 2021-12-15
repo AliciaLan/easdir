@@ -37,7 +37,7 @@ header {
 }
 
 
-/* CONTENU GENERAL PAGE */
+/* CONTENU GENERAL PAGES */
 
 button {
     padding: 5px;
@@ -91,6 +91,17 @@ button {
     word-wrap: break-word;
 }
 
+#contenu-elements article input {
+    text-align: center;
+    word-wrap: break-word;
+    width: 95px;
+}
+
+#contenu-elements article button {
+    text-align: center;
+    width: 100px;
+}
+
 
 /* CONTENU PAGE DETAIL TEXTE */
 
@@ -111,12 +122,19 @@ button {
 #texte-name {
     margin-left: 5px;
     margin-bottom: 10px;
+    font-size: 1.5em;
 }
 
 #texte-contenu {
     border: solid;
     border-color: rgb(200, 201, 197);
     padding: 5px;
+    font-size: 1em;
+}
+
+#texte-edit-form form {
+    display: flex;
+    flex-direction: column;
 }
 
 

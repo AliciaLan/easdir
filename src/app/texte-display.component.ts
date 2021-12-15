@@ -14,15 +14,19 @@ import { TexteService } from './texte.service';
       <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
     </div>
 
-    <easdir-texte-form
-      *ngIf="this.EditMode && this.texte"
-      [texte]="this.texte"
-      (cancel)="ToggleEdit()"
-      (save)="saveTexte($event)">
-    </easdir-texte-form>
+    <div *ngIf="!this.EditMode">
+      <h2 id="texte-name">{{ this.texte?.name }}</h2>
+      <p id="texte-contenu">{{ this.texte?.contenu }}</p>
+    </div>
 
-    <h2 id="texte-name">{{ this.texte?.name }}</h2>
-    <p id="texte-contenu">{{ this.texte?.contenu }}</p>
+    <div>
+      <easdir-texte-edit-form
+        *ngIf="this.EditMode && this.texte"
+        [texte]="this.texte"
+        (cancel)="ToggleEdit()"
+        (save)="saveTexte($event)">
+      </easdir-texte-edit-form>
+    </div>
   </div>
   `,
   styles: []

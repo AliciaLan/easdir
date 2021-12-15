@@ -4,21 +4,24 @@ import { Texte } from './texte.model';
 import { TexteService } from './texte.service';
 
 @Component({
-  selector: 'easdir-texte-form',
+  selector: 'easdir-texte-edit-form',
   template: `
-    <article>
+    <div id="texte-edit-form">
       <form (ngSubmit)="submit()" [formGroup]="texteForm">
-        <img src="../assets/fichier.png">
-        <input formControlName="name">
-        <button type="submit" [disabled]="texteForm.invalid">Ajouter</button>
-        <button type="button" (click)="cancelForm()">Annuler</button>
+        <input id="texte-name" formControlName="name">
+        <input id="texte-contenu" formControlName="contenu">
+        <div>
+          <button type="submit" [disabled]="texteForm.invalid">Modifier</button>
+          <button type="button" (click)="cancelForm()">Annuler</button>
+        </div>
       </form>
-    </article>
+    </div>
   `,
-  styles: ['input.ng-invalid { background: lightcoral }']
+  styles: [
+  ]
 })
-export class TexteFormComponent implements OnInit {
-  texte: Texte = this.service.createTexte();
+export class TexteEditFormComponent implements OnInit {
+  @Input() texte: Texte = this.service.createTexte();
   @Output() save = new EventEmitter<Texte>();
   @Output() cancel = new EventEmitter();
   texteForm: FormGroup;
@@ -31,6 +34,8 @@ export class TexteFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.texteForm.get('name')?.setValue(this.texte?.name);
+    this.texteForm.get('contenu')?.setValue(this.texte?.contenu);
   }
 
   submit() {
@@ -44,4 +49,5 @@ export class TexteFormComponent implements OnInit {
   cancelForm() {
     this.cancel.emit();
   }
+
 }

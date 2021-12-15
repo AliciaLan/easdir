@@ -9,6 +9,7 @@ import { TexteDisplayComponent } from './texte-display.component';
 import { TexteFormComponent } from './texte-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DossierFormComponent } from './dossier-form.component';
+import { TexteEditFormComponent } from './texte-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DossierFormComponent } from './dossier-form.component';
     ElementsListComponent,
     TexteDisplayComponent,
     TexteFormComponent,
-    DossierFormComponent
+    DossierFormComponent,
+    TexteEditFormComponent
   ],
   imports: [
     BrowserModule,
