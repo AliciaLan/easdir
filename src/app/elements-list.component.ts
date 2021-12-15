@@ -16,8 +16,14 @@ import { TexteService } from './texte.service';
 
       <div id="contenu-button">
         <button id="button-add-dossier" type="button">Ajouter un dossier</button>
-        <button id="button-add-text" type="button">Ajouter un fichier texte</button>
+        <button (click)="ToggleAddTexteMode()" id="button-add-texte" type="button">Ajouter un fichier texte</button>
       </div>
+
+      <easdir-texte-form
+        *ngIf="this.AddTexteMode"
+        (cancel)="ToggleAddTexteMode()"
+        (save)="saveTexte($event)">
+      </easdir-texte-form>
 
       <div id="contenu-elements">
         <article *ngFor="let dossier of dossiers$ | async" class="dossier">
@@ -25,11 +31,11 @@ import { TexteService } from './texte.service';
           <p>{{ dossier.name }}</p>
         </article>
         <article
-        *ngFor="let texte of textes$ | async"
-        [routerLink]="['/texte', texte.id]"
-        class="text">
-          <img src="../assets/fichier.png">
-          <p>{{ texte.name }}</p>
+          *ngFor="let texte of textes$ | async"
+          [routerLink]="['/texte', texte.id]"
+          class="text">
+            <img src="../assets/fichier.png">
+            <p>{{ texte.name }}</p>
         </article>
       </div>
     </div>
@@ -41,10 +47,21 @@ export class ElementsListComponent implements OnInit {
   dossiers$: Observable<Dossier[]> = this.DossierService.getListDossier();
   textes$: Observable<Texte[]> = this.TexteService.getListTexte();
 
+  AddTexteMode: boolean = false;
+
   constructor(private DossierService : DossierService, private TexteService : TexteService) {
   }
 
   ngOnInit(): void {
+  }
+
+  saveTexte(texte : Texte) {
+    this.TexteService.addTexte(texte);
+  }
+
+  ToggleAddTexteMode(){
+    this.AddTexteMode = !this.AddTexteMode;
+    console.log(this.AddTexteMode);
   }
 
 }

@@ -6,15 +6,19 @@ import { AppComponent } from './app.component';
 import { ElementsListComponent } from './elements-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TexteDisplayComponent } from './texte-display.component';
+import { TexteFormComponent } from './texte-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ElementsListComponent,
-    TexteDisplayComponent
+    TexteDisplayComponent,
+    TexteFormComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
   ],

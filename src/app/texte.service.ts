@@ -20,6 +20,24 @@ export class TexteService {
       });
   }
 
+  addTexte(texte : Texte) : void {
+    this.http.post(this.TexteUrl, texte)
+      .subscribe(data => {
+        console.log(data);
+        const textes = this.textes$.getValue();
+        textes.push(texte);
+        this.textes$.next(textes);
+      });
+  }
+
+  createTexte() : Texte {
+    return {
+      id: this.idService.getNewId(),
+      name: '',
+      contenu: ''
+    }
+  }
+
   delete(texte: Texte) : void {
     this.http.delete(this.TexteUrl + texte.id)
       .subscribe(data => {
