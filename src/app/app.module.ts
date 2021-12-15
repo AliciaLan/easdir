@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { TexteDisplayComponent } from './texte-display.component';
 import { TexteFormComponent } from './texte-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DossierFormComponent } from './dossier-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ElementsListComponent,
     TexteDisplayComponent,
-    TexteFormComponent
+    TexteFormComponent,
+    DossierFormComponent
   ],
   imports: [
     BrowserModule,

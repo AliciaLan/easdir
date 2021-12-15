@@ -20,6 +20,23 @@ export class DossierService {
       });
   }
 
+  addDossier(dossier : Dossier) : void {
+    this.http.post(this.DossierUrl, dossier)
+      .subscribe(data => {
+        console.log(data);
+        const dossiers = this.dossiers$.getValue();
+        dossiers.push(dossier);
+        this.dossiers$.next(dossiers);
+      });
+  }
+
+  createDossier() : Dossier {
+    return {
+      id: this.idService.getNewId(),
+      name: ''
+    }
+  }
+
   getListDossier() {
     return this.dossiers$;
   }
