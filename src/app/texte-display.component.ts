@@ -12,14 +12,14 @@ import { TexteService } from './texte.service';
       <button id="button-edit" type="button">Modifier le fichier</button>
       <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
     </div>
-    <h2 id="texte-name">{{ this.texte.name }}</h2>
-    <p id="texte-contenu">{{ this.texte.contenu }}</p>
+    <h2 id="texte-name">{{ this.texte?.name }}</h2>
+    <p id="texte-contenu">{{ this.texte?.contenu }}</p>
   </div>
   `,
   styles: []
 })
 export class TexteDisplayComponent implements OnInit {
-  texte!: Texte;
+  texte?: Texte;
 
   constructor(private TexteService: TexteService, route: ActivatedRoute, private router: Router) {
     route.paramMap.subscribe(
@@ -44,8 +44,10 @@ export class TexteDisplayComponent implements OnInit {
   }
 
   delete() : void {
-    this.TexteService.delete(this.texte);
-    this.backToList();
+    if(this.texte){
+      this.TexteService.delete(this.texte);
+      this.backToList();
+    }
   }
 
 }
