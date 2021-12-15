@@ -78,6 +78,7 @@ button {
     padding: 5px;
     margin: 10px;
     width: 100px;
+    height: 160px;
 }
 
 #contenu-elements article img {
@@ -89,17 +90,23 @@ button {
 #contenu-elements article p {
     text-align: center;
     word-wrap: break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 #contenu-elements article input {
     text-align: center;
     word-wrap: break-word;
     width: 95px;
+    margin-top: 5px;
 }
 
 #contenu-elements article button {
     text-align: center;
-    width: 100px;
+    width: 50px;
+    font-size: 0.6em;
+    margin-top: 5px;
 }
 
 
@@ -123,6 +130,7 @@ button {
     margin-left: 5px;
     margin-bottom: 10px;
     font-size: 1.5em;
+    height: 30px;
 }
 
 #texte-contenu {
@@ -130,6 +138,7 @@ button {
     border-color: rgb(200, 201, 197);
     padding: 5px;
     font-size: 1em;
+    height: 20px;
 }
 
 #texte-edit-form form {

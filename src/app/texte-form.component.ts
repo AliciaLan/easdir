@@ -10,8 +10,10 @@ import { TexteService } from './texte.service';
       <form (ngSubmit)="submit()" [formGroup]="texteForm">
         <img src="../assets/fichier.png">
         <input formControlName="name">
-        <button type="submit" [disabled]="texteForm.invalid">Ajouter</button>
-        <button type="button" (click)="cancelForm()">Annuler</button>
+        <div>
+          <button type="submit" [disabled]="texteForm.invalid">Ajouter</button>
+          <button type="button" (click)="cancelForm()">Annuler</button>
+        </div>
       </form>
     </article>
   `,

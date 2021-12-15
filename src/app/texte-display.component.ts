@@ -10,13 +10,13 @@ import { TexteService } from './texte.service';
   <div id="texte">
     <div id="texte-button">
       <button (click)="backToList()">Retour</button>
-      <button (click)="ToggleEdit()" id="button-edit" type="button">Modifier le fichier</button>
       <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
     </div>
 
     <div *ngIf="!this.EditMode">
       <h2 id="texte-name">{{ this.texte?.name }}</h2>
       <p id="texte-contenu">{{ this.texte?.contenu }}</p>
+      <button (click)="ToggleEdit()" id="button-edit" type="button">Modifier le fichier</button>
     </div>
 
     <div>

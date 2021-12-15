@@ -10,8 +10,10 @@ import { DossierService } from './dossier.service';
       <form (ngSubmit)="submit()" [formGroup]="dossierForm">
         <img src="../assets/dossier.png">
         <input formControlName="name">
-        <button type="submit" [disabled]="dossierForm.invalid">Ajouter</button>
-        <button type="button" (click)="cancelForm()">Annuler</button>
+        <div id="button-form">
+          <button type="submit" [disabled]="dossierForm.invalid">Ajouter</button>
+          <button type="button" (click)="cancelForm()">Annuler</button>
+        </div>
       </form>
     </article>
   `,
