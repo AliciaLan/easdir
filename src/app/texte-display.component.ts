@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Texte } from './texte.model';
 import { TexteService } from './texte.service';
 
@@ -9,9 +10,17 @@ import { TexteService } from './texte.service';
   <div id="texte">
     <div id="texte-button">
       <button (click)="backToList()">Retour</button>
-      <button id="button-edit" type="button">Modifier le fichier</button>
+      <button (click)="ToggleEdit()" id="button-edit" type="button">Modifier le fichier</button>
       <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
     </div>
+
+    <easdir-texte-form
+      *ngIf="this.EditMode && this.texte"
+      [texte]="this.texte"
+      (cancel)="ToggleEdit()"
+      (save)="saveTexte($event)">
+    </easdir-texte-form>
+
     <h2 id="texte-name">{{ this.texte?.name }}</h2>
     <p id="texte-contenu">{{ this.texte?.contenu }}</p>
   </div>
@@ -20,6 +29,8 @@ import { TexteService } from './texte.service';
 })
 export class TexteDisplayComponent implements OnInit {
   texte?: Texte;
+
+  EditMode: boolean = false;
 
   constructor(private TexteService: TexteService, route: ActivatedRoute, private router: Router) {
     route.paramMap.subscribe(
@@ -48,6 +59,15 @@ export class TexteDisplayComponent implements OnInit {
       this.TexteService.delete(this.texte);
       this.backToList();
     }
+  }
+
+  saveTexte(texte : Texte) {
+    this.TexteService.editTexte(texte);
+    this.backToList();
+  }
+
+  ToggleEdit() {
+    this.EditMode = !this.EditMode;
   }
 
 }

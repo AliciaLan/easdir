@@ -38,6 +38,20 @@ export class TexteService {
     }
   }
 
+  editTexte(texte : Texte) {
+    this.http.put(this.TexteUrl + texte.id, texte)
+      .subscribe(data => {
+        const textes = this.textes$.getValue();
+        const element = this.textes$.getValue().find(e => e.id === texte.id);
+        if (element)
+        {
+          textes[this.textes$.getValue().indexOf(element)].name = texte.name;
+          textes[this.textes$.getValue().indexOf(element)].contenu = texte.contenu;
+        }
+        this.textes$.next(textes);
+      });
+  }
+
   delete(texte: Texte) : void {
     this.http.delete(this.TexteUrl + texte.id)
       .subscribe(data => {

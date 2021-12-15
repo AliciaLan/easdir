@@ -37,8 +37,8 @@ export class TexteFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.texteForm.get('firstName')?.setValue(this.texte?.name);
-    this.texteForm.get('lastName')?.setValue(this.texte?.contenu);
+    this.texteForm.get('name')?.setValue(this.texte?.name);
+    this.texteForm.get('contenu')?.setValue(this.texte?.contenu);
   }
 
   submit() {
