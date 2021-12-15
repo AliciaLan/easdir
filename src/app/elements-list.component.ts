@@ -64,10 +64,12 @@ export class ElementsListComponent implements OnInit {
 
   saveDossier(dossier : Dossier) {
     this.DossierService.addDossier(dossier);
+    this.ToggleAddDossierMode();
   }
 
   saveTexte(texte : Texte) {
     this.TexteService.addTexte(texte);
+    this.ToggleAddTexteMode();
   }
 
   ToggleAddDossierMode(){
