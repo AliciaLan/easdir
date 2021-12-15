@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/list' },
   { path: 'list', component: ElementsListComponent },
   { path: 'texte/:texteId', component: TexteDisplayComponent },
+  { path: 'texte', pathMatch: 'full', redirectTo: '/list' },
 ];
 
 @NgModule({
