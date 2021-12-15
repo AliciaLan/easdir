@@ -42,7 +42,11 @@ export class TexteService {
     this.http.delete(this.TexteUrl + texte.id)
       .subscribe(data => {
         const textes = this.textes$.getValue();
-        textes.splice(textes.indexOf(texte), 1);
+        const element = this.textes$.getValue().find(e => e.id === texte.id);
+        if (element)
+        {
+          textes.splice(this.textes$.getValue().indexOf(element), 1);
+        }
         this.textes$.next(textes);
       });
   }
