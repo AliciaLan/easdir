@@ -10,7 +10,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class DossierService {
   dossiers$: BehaviorSubject<Dossier[]> = new BehaviorSubject<Dossier[]>([]);
-  DossierUrl:string = environment.apiUrl + 'dossier/';
+  DossierUrl: string = environment.apiUrl + 'dossier/';
 
   constructor(private idService : IdService, private http: HttpClient) {
     this.http.get<Dossier[]>(this.DossierUrl)
@@ -33,7 +33,8 @@ export class DossierService {
   createDossier() : Dossier {
     return {
       id: this.idService.getNewId(),
-      name: ''
+      name: '',
+      child: []
     }
   }
 
