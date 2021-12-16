@@ -118,9 +118,9 @@
         font-size: 0.6em;
         margin-top: 5px;
     }
-    /* CONTENU PAGE DETAIL TEXTE */
+    /* CONTENU PAGES DETAIL */
     
-    #texte {
+    #display {
         margin: 10px;
     }
     
@@ -128,7 +128,7 @@
         margin-bottom: 20px;
     }
     
-    #texte-button {
+    #display-button {
         display: flex;
         flex-direction: row;
         justify-content: space-between;

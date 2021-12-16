@@ -37,6 +37,23 @@ export class ImageService {
     }
   }
 
+  delete(image: Image) : void {
+    this.http.delete(this.ImageUrl + image.id)
+      .subscribe(data => {
+        const images = this.images$.getValue();
+        const element = this.images$.getValue().find(e => e.id === image.id);
+        if (element)
+        {
+          images.splice(this.images$.getValue().indexOf(element), 1);
+        }
+        this.images$.next(images);
+      });
+  }
+
+  get(id:string): Observable<Image>{
+    return this.http.get<Image>(this.ImageUrl + id);
+  }
+
   getListImage() {
     return this.images$;
   }

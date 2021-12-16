@@ -6,8 +6,8 @@ import { TexteService } from './texte.service';
 @Component({
   selector: 'easdir-texte-display',
   template: `
-  <div id="texte">
-    <div id="texte-button">
+  <div id="display">
+    <div id="display-button">
       <button (click)="backToList()">Retour</button>
       <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
     </div>

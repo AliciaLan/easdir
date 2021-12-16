@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DossierFormComponent } from './dossier-form.component';
 import { TexteEditFormComponent } from './texte-edit-form.component';
 import { ImageFormComponent } from './image-form.component';
+import { ImageEditFormComponent } from './image-edit-form.component';
+import { ImageDisplayComponent } from './image-display.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ImageFormComponent } from './image-form.component';
     TexteFormComponent,
     DossierFormComponent,
     TexteEditFormComponent,
-    ImageFormComponent
+    ImageFormComponent,
+    ImageEditFormComponent,
+    ImageDisplayComponent
   ],
   imports: [
     BrowserModule,
