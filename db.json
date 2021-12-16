@@ -1,49 +1,59 @@
 {
-    "dossier": [{
-        "id": 1,
-        "name": "Dossier Perso",
-        "child": [{
-                "id": 58,
-                "name": "Fichier1",
-                "type": "text"
-            },
-            {
-                "id": 59,
-                "name": "Dossier Pro",
-                "type": "dossier"
-            }
-        ]
-    }],
-    "texte": [{
-            "id": "842d6d4a-e4a5-4624-9db5-bf8f0bc772eb",
-            "name": "cc",
-            "contenu": null
+  "dossier": [
+    {
+      "id": 1,
+      "name": "Dossier Perso",
+      "child": [
+        {
+          "id": 58,
+          "name": "Fichier1",
+          "type": "text"
         },
         {
-            "id": "06fe7878-c1eb-4c83-a514-497612567c5c",
-            "name": "bonjr",
-            "contenu": null
-        },
-        {
-            "id": "a5a10baf-dfbe-4e59-9314-dfb4baf13796",
-            "name": "[code]oky[code]",
-            "contenu": "<script> alert(\"oui\") </script>"
-        },
-        {
-            "id": "1e4ead7d-e498-4bff-91ef-ee60c55ec3fc",
-            "name": "nfsdqdds",
-            "contenu": "fffff"
-        },
-        {
-            "id": "3673fa34-6455-4beb-86f9-e5da33999111",
-            "name": "x",
-            "contenu": null
+          "id": 59,
+          "name": "Dossier Pro",
+          "type": "dossier"
         }
-
-    ],
-    "images": [{
-        "id": "A",
-        "name": "image",
-        "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
-    }]
+      ]
+    }
+  ],
+  "texte": [
+    {
+      "id": "842d6d4a-e4a5-4624-9db5-bf8f0bc772eb",
+      "name": "cc",
+      "contenu": null
+    },
+    {
+      "id": "06fe7878-c1eb-4c83-a514-497612567c5c",
+      "name": "bonjr",
+      "contenu": null
+    },
+    {
+      "id": "a5a10baf-dfbe-4e59-9314-dfb4baf13796",
+      "name": "[code]oky[code]",
+      "contenu": "<script> alert(\"oui\") </script>"
+    },
+    {
+      "id": "1e4ead7d-e498-4bff-91ef-ee60c55ec3fc",
+      "name": "nfsdqdds",
+      "contenu": "fffff"
+    },
+    {
+      "id": "3673fa34-6455-4beb-86f9-e5da33999111",
+      "name": "x",
+      "contenu": null
+    }
+  ],
+  "image": [
+    {
+      "id": "A",
+      "name": "image",
+      "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
+    },
+    {
+      "id": "7d88df5b-fd9d-4d34-bdc8-a3f6cfc668a8",
+      "name": "d",
+      "src": "d"
+    }
+  ]
 }

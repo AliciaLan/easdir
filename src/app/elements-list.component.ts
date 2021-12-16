@@ -4,6 +4,8 @@ import { Dossier } from './dossier.model';
 import { DossierService } from './dossier.service';
 import { Texte } from './texte.model';
 import { TexteService } from './texte.service';
+import { Image } from './image.model';
+import { ImageService } from './image.service';
 
 @Component({
   selector: 'easdir-elements-list',
@@ -15,8 +17,9 @@ import { TexteService } from './texte.service';
       </div>
 
       <div id="contenu-button">
-        <button (click)="ToggleAddDossierMode()" id="button-add-dossier" type="button">Ajouter un dossier</button>
-        <button (click)="ToggleAddTexteMode()" id="button-add-texte" type="button">Ajouter un fichier texte</button>
+        <button (click)="ToggleAddDossierMode()" type="button">Ajouter un dossier</button>
+        <button (click)="ToggleAddTexteMode()" type="button">Ajouter un fichier texte</button>
+        <button (click)="ToggleAddImageMode()" type="button">Ajouter une image</button>
       </div>
 
       <div id="contenu-elements">
@@ -34,7 +37,7 @@ import { TexteService } from './texte.service';
         <article
           *ngFor="let texte of textes$ | async"
           [routerLink]="['/texte', texte.id]">
-            <img src="../assets/fichier.png">
+            <img src="../assets/texte.png">
             <p>{{ texte.name }}</p>
         </article>
 
@@ -43,6 +46,19 @@ import { TexteService } from './texte.service';
           (cancel)="ToggleAddTexteMode()"
           (save)="saveTexte($event)">
         </easdir-texte-form>
+
+        <article
+          *ngFor="let image of images$ | async"
+          [routerLink]="['/image', image.id]">
+            <img src="../assets/image.png">
+            <p>{{ image.name }}</p>
+        </article>
+
+        <easdir-image-form
+          *ngIf="this.AddImageMode"
+          (cancel)="ToggleAddImageMode()"
+          (save)="saveImage($event)">
+        </easdir-image-form>
       </div>
     </div>
   `,
@@ -52,11 +68,13 @@ import { TexteService } from './texte.service';
 export class ElementsListComponent implements OnInit {
   dossiers$: Observable<Dossier[]> = this.DossierService.getListDossier();
   textes$: Observable<Texte[]> = this.TexteService.getListTexte();
+  images$: Observable<Image[]> = this.ImageService.getListImage();
 
   AddTexteMode: boolean = false;
   AddDossierMode: boolean = false;
+  AddImageMode: boolean = false;
 
-  constructor(private DossierService : DossierService, private TexteService : TexteService) {
+  constructor(private DossierService : DossierService, private TexteService : TexteService, private ImageService : ImageService) {
   }
 
   ngOnInit(): void {
@@ -67,6 +85,11 @@ export class ElementsListComponent implements OnInit {
     this.ToggleAddDossierMode();
   }
 
+  saveImage(image : Image) {
+    this.ImageService.addImage(image);
+    this.ToggleAddImageMode();
+  }
+
   saveTexte(texte : Texte) {
     this.TexteService.addTexte(texte);
     this.ToggleAddTexteMode();
@@ -74,11 +97,19 @@ export class ElementsListComponent implements OnInit {
 
   ToggleAddDossierMode(){
     this.AddTexteMode = false;
+    this.AddImageMode = false;
     this.AddDossierMode = !this.AddDossierMode;
+  }
+
+  ToggleAddImageMode(){
+    this.AddDossierMode = false;
+    this.AddTexteMode = false;
+    this.AddImageMode = !this.AddImageMode;
   }
 
   ToggleAddTexteMode(){
     this.AddDossierMode = false;
+    this.AddImageMode = false;
     this.AddTexteMode = !this.AddTexteMode;
   }
 

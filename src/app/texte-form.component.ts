@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Texte } from './texte.model';
 import { TexteService } from './texte.service';
@@ -8,7 +8,7 @@ import { TexteService } from './texte.service';
   template: `
     <article>
       <form (ngSubmit)="submit()" [formGroup]="texteForm">
-        <img src="../assets/fichier.png">
+        <img src="../assets/texte.png">
         <input formControlName="name">
         <div>
           <button type="submit" [disabled]="texteForm.invalid">Ajouter</button>

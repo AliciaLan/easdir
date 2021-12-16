@@ -15,7 +15,6 @@ export class TexteService {
   constructor(private idService : IdService, private http: HttpClient) {
     this.http.get<Texte[]>(this.TexteUrl)
       .subscribe(textes => {
-        console.log(textes);
         this.textes$.next(textes);
       });
   }
