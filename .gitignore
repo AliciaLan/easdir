@@ -43,3 +43,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+package.json
+package-lock.json
+.vscode/launch.json
+.vscode/tasks.json
