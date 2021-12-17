@@ -9,8 +9,8 @@ import { ImageService } from './image.service';
     <article>
       <form (ngSubmit)="submit()" [formGroup]="imageForm">
         <img src="../assets/image.png">
-        <input formControlName="name">
-        <input formControlName="src">
+        <input formControlName="name" placeholder="Nom">
+        <input formControlName="src" placeholder="Lien">
         <div>
           <button type="submit" [disabled]="imageForm.invalid">Ajouter</button>
           <button type="button" (click)="cancelForm()">Annuler</button>

@@ -9,7 +9,7 @@ import { TexteService } from './texte.service';
     <article>
       <form (ngSubmit)="submit()" [formGroup]="texteForm">
         <img src="../assets/texte.png">
-        <input formControlName="name">
+        <input formControlName="name" placeholder="Nom">
         <div>
           <button type="submit" [disabled]="texteForm.invalid">Ajouter</button>
           <button type="button" (click)="cancelForm()">Annuler</button>

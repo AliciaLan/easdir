@@ -8,8 +8,8 @@ import { TexteService } from './texte.service';
   template: `
     <div id="texte-edit-form">
       <form (ngSubmit)="submit()" [formGroup]="texteForm">
-        <input id="texte-name" formControlName="name">
-        <input id="texte-contenu" formControlName="contenu">
+        <input id="texte-name" formControlName="name" placeholder="Nom">
+        <input id="texte-contenu" formControlName="contenu" placeholder="Contenu">
         <div>
           <button type="submit" [disabled]="texteForm.invalid">Modifier</button>
           <button type="button" (click)="cancelForm()">Annuler</button>
