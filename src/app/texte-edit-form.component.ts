@@ -6,10 +6,10 @@ import { TexteService } from './texte.service';
 @Component({
   selector: 'easdir-texte-edit-form',
   template: `
-    <div id="texte-edit-form">
+    <div id="display-edit-form">
       <form (ngSubmit)="submit()" [formGroup]="texteForm">
-        <input id="texte-name" formControlName="name" placeholder="Nom">
-        <input id="texte-contenu" formControlName="contenu" placeholder="Contenu">
+        <input id="display-name" formControlName="name" placeholder="Nom">
+        <input id="display-contenu" formControlName="contenu" placeholder="Contenu">
         <div>
           <button type="submit" [disabled]="texteForm.invalid">Modifier</button>
           <button type="button" (click)="cancelForm()">Annuler</button>

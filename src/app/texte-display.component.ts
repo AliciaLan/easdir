@@ -6,27 +6,27 @@ import { TexteService } from './texte.service';
 @Component({
   selector: 'easdir-texte-display',
   template: `
-  <div id="display">
-    <div id="display-button">
-      <button (click)="backToList()">Retour</button>
-      <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
-    </div>
+    <div id="display">
+      <div id="display-button">
+        <button (click)="backToList()">Retour</button>
+        <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
+      </div>
 
-    <div *ngIf="!this.EditMode">
-      <h2 id="texte-name">{{ this.texte?.name }}</h2>
-      <p id="texte-contenu">{{ this.texte?.contenu }}</p>
-      <button (click)="ToggleEdit()" id="button-edit" type="button">Modifier le fichier</button>
-    </div>
+      <div *ngIf="!this.EditMode">
+        <h2 id="display-name">{{ this.texte?.name }}</h2>
+        <p id="display-contenu">{{ this.texte?.contenu }}</p>
+        <button (click)="ToggleEdit()" id="button-edit" type="button">Modifier le fichier</button>
+      </div>
 
-    <div>
-      <easdir-texte-edit-form
-        *ngIf="this.EditMode && this.texte"
-        [texte]="this.texte"
-        (cancel)="ToggleEdit()"
-        (save)="saveTexte($event)">
-      </easdir-texte-edit-form>
+      <div>
+        <easdir-texte-edit-form
+          *ngIf="this.EditMode && this.texte"
+          [texte]="this.texte"
+          (cancel)="ToggleEdit()"
+          (save)="saveTexte($event)">
+        </easdir-texte-edit-form>
+      </div>
     </div>
-  </div>
   `,
   styles: []
 })

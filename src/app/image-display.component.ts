@@ -9,13 +9,22 @@ import { ImageService } from './image.service';
     <div id="display">
       <div id="display-button">
         <button (click)="backToList()">Retour</button>
-        <button id="button-edit" type="button">Modifier l'image</button>
+        <button *ngIf="!this.EditMode" (click)="ToggleEdit()" id="button-edit" type="button">Modifier l'image</button>
         <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
       </div>
 
+      <div *ngIf="!this.EditMode">
+        <h2 id="display-name">{{ this.image?.name }}</h2>
+        <img id="display-src" src="{{ this.image?.src }}">
+      </div>
+
       <div>
-        <h2 id="image-name">{{ this.image?.name }}</h2>
-        <img id="image-src" src="{{ this.image?.src }}">
+        <easdir-image-edit-form
+          *ngIf="this.EditMode && this.image"
+          [image]="this.image"
+          (cancel)="ToggleEdit()"
+          (save)="saveImage($event)">
+        </easdir-image-edit-form>
       </div>
     </div>
   `,
@@ -24,6 +33,8 @@ import { ImageService } from './image.service';
 })
 export class ImageDisplayComponent implements OnInit {
   image?: Image;
+
+  EditMode: boolean = false;
 
   constructor(private ImageService: ImageService, route: ActivatedRoute, private router: Router) {
     route.paramMap.subscribe(
@@ -52,6 +63,15 @@ export class ImageDisplayComponent implements OnInit {
       this.ImageService.delete(this.image);
       this.backToList();
     }
+  }
+
+  saveImage(image : Image) {
+    this.ImageService.editImage(image);
+    this.backToList();
+  }
+
+  ToggleEdit() {
+    this.EditMode = !this.EditMode;
   }
 
 }

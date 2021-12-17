@@ -37,6 +37,20 @@ export class ImageService {
     }
   }
 
+  editImage(image : Image) {
+    this.http.put(this.ImageUrl + image.id, image)
+      .subscribe(data => {
+        const images = this.images$.getValue();
+        const element = this.images$.getValue().find(e => e.id === image.id);
+        if (element)
+        {
+          images[this.images$.getValue().indexOf(element)].name = image.name;
+          images[this.images$.getValue().indexOf(element)].src = image.src;
+        }
+        this.images$.next(images);
+      });
+  }
+
   delete(image: Image) : void {
     this.http.delete(this.ImageUrl + image.id)
       .subscribe(data => {
