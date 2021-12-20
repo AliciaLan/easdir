@@ -26,13 +26,14 @@ import { TexteService } from './texte.service';
           (save)="saveTexte($event)">
         </easdir-texte-edit-form>
       </div>
+
+      <p id="display-date">Dernière modification : {{ this.texte?.last_modification | date:"full" }}</p>
     </div>
   `,
   styles: []
 })
 export class TexteDisplayComponent implements OnInit {
   texte?: Texte;
-
   EditMode: boolean = false;
 
   constructor(private TexteService: TexteService, route: ActivatedRoute, private router: Router) {

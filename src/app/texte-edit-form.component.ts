@@ -24,7 +24,9 @@ export class TexteEditFormComponent implements OnInit {
   @Input() texte: Texte = this.service.createTexte();
   @Output() save = new EventEmitter<Texte>();
   @Output() cancel = new EventEmitter();
+
   texteForm: FormGroup;
+  date: number = Date.now();
 
   constructor(private service: TexteService) {
     this.texteForm = new FormGroup({
@@ -40,7 +42,9 @@ export class TexteEditFormComponent implements OnInit {
 
   submit() {
     const texteToSave: Texte = {
-      id: this.texte.id, ...this.texteForm.value
+      id: this.texte.id,
+      ...this.texteForm.value,
+      last_modification: this.date
     };
 
     this.save.emit(texteToSave);

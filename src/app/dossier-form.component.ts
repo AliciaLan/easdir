@@ -23,7 +23,9 @@ export class DossierFormComponent implements OnInit {
   @Input() dossier: Dossier = this.service.createDossier();
   @Output() save = new EventEmitter<Dossier>();
   @Output() cancel = new EventEmitter();
+  
   dossierForm: FormGroup;
+  date: number = Date.now();
 
   constructor(private service: DossierService) {
     this.dossierForm = new FormGroup({
@@ -37,7 +39,9 @@ export class DossierFormComponent implements OnInit {
 
   submit() {
     const dossierToSave: Dossier = {
-      id: this.dossier.id, ...this.dossierForm.value
+      id: this.dossier.id,
+      ...this.dossierForm.value,
+      last_modification: this.date
     };
 
     this.save.emit(dossierToSave);

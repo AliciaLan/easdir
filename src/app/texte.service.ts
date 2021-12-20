@@ -33,7 +33,8 @@ export class TexteService {
     return {
       id: this.idService.getNewId(),
       name: '',
-      contenu: ''
+      contenu: '',
+      last_modification: 0
     }
   }
 

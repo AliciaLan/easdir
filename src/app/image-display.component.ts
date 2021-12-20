@@ -26,6 +26,8 @@ import { ImageService } from './image.service';
           (save)="saveImage($event)">
         </easdir-image-edit-form>
       </div>
+
+      <p id="display-date">Dernière modification : {{ this.image?.last_modification | date:"full" }}</p>
     </div>
   `,
   styles: [
@@ -33,7 +35,6 @@ import { ImageService } from './image.service';
 })
 export class ImageDisplayComponent implements OnInit {
   image?: Image;
-
   EditMode: boolean = false;
 
   constructor(private ImageService: ImageService, route: ActivatedRoute, private router: Router) {

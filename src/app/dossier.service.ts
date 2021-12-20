@@ -32,6 +32,7 @@ export class DossierService {
     return {
       id: this.idService.getNewId(),
       name: '',
+      last_modification: 0,
       child: []
     }
   }

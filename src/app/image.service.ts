@@ -33,7 +33,8 @@ export class ImageService {
     return {
       id: this.idService.getNewId(),
       name: '',
-      src: ''
+      src: '',
+      last_modification: 0
     }
   }
 

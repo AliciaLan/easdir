@@ -24,7 +24,9 @@ export class ImageEditFormComponent implements OnInit {
   @Input() image: Image = this.service.createImage();
   @Output() save = new EventEmitter<Image>();
   @Output() cancel = new EventEmitter();
+
   imageForm: FormGroup;
+  date: number = Date.now();
 
   constructor(private service: ImageService) {
     this.imageForm = new FormGroup({
@@ -40,7 +42,9 @@ export class ImageEditFormComponent implements OnInit {
 
   submit() {
     const imageToSave: Image = {
-      id: this.image.id, ...this.imageForm.value
+      id: this.image.id,
+      ...this.imageForm.value,
+      last_modification: this.date
     };
 
     this.save.emit(imageToSave);
