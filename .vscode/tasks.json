@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "jsonServer",
+      "command": "json-server",
+      "args": ["db.json"],
+      "type": "shell"
+    },
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": [],
+      "label": "npm: start",
+      "detail": "ng serve"
+    },
+    {
+      "label": "all",
+      "dependsOn": [
+          "jsonServer",
+          "npm: start"
+      ]
+  }
+  ]
+}
