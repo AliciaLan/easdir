@@ -27,7 +27,10 @@ import { TexteService } from './texte.service';
         </easdir-texte-edit-form>
       </div>
 
-      <p id="display-date">Dernière modification : {{ this.texte?.last_modification | date:"full" }}</p>
+      <div id="display-information">
+        <h2>Informations :</h2>
+        <p id="display-date">Dernière modification : {{ this.texte?.last_modification | date:"full" }}</p>
+      </div>
     </div>
   `,
   styles: []
