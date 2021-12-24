@@ -5,26 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ElementsListComponent } from './elements-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TexteDisplayComponent } from './texte-display.component';
-import { TexteFormComponent } from './texte-form.component';
+import { ObjetDisplayComponent } from './file-display.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DossierFormComponent } from './dossier-form.component';
-import { TexteEditFormComponent } from './texte-edit-form.component';
-import { ImageFormComponent } from './image-form.component';
-import { ImageEditFormComponent } from './image-edit-form.component';
-import { ImageDisplayComponent } from './image-display.component';
+import { ObjetFormComponent } from './objet-form.component';
+import { ObjetNameComponent } from './objet-name.component';
+import { ObjetEditFormComponent } from './file-edit-form.component';
+//import { ImageFormComponent } from './image-form.component';
+//import { ImageEditFormComponent } from './image-edit-form.component';
+//import { ImageDisplayComponent } from './image-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ElementsListComponent,
-    TexteDisplayComponent,
-    TexteFormComponent,
-    DossierFormComponent,
-    TexteEditFormComponent,
-    ImageFormComponent,
-    ImageEditFormComponent,
-    ImageDisplayComponent
+    ObjetDisplayComponent,
+    ObjetEditFormComponent,
+    ObjetFormComponent,
+    ObjetNameComponent
   ],
   imports: [
     BrowserModule,

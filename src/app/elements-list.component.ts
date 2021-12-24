@@ -1,19 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Dossier } from './dossier.model';
-import { DossierService } from './dossier.service';
-import { Texte } from './texte.model';
-import { TexteService } from './texte.service';
-import { Image } from './image.model';
-import { ImageService } from './image.service';
+import { Objet } from './objet.model';
+import { ObjetService } from './objet.service';
+import { DataService } from './data.service';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'easdir-elements-list',
   template: `
     <div id="contenu">
       <div id="contenu-titre">
-        <h2>Dossier parent</h2>
-        <button id="button-suppr" type="button">Supprimer le dossier</button>
+        <h2>{{this.objet?.name}}</h2>
       </div>
 
       <div id="contenu-button">
@@ -23,42 +20,51 @@ import { ImageService } from './image.service';
       </div>
 
       <div id="contenu-elements">
-        <article *ngFor="let dossier of dossiers$ | async" class="dossier">
-          <img src="../assets/dossier.png">
-          <p>{{ dossier.name }}</p>
-        </article>
+      <article class="dossier" *ngIf="this.objet?.id != ''">
+            <img src="../assets/dossier.png" [routerLink]="['/list', objet?.idParent]">
+            <p>back</p>
+          </article>
+        <ng-container
+          *ngFor="let one of objets$ | async " >
+          <article class="dossier" *ngIf="one.idParent === this.objet?.id">
+            <img *ngIf="one.type == 'dossier' " src="../assets/dossier.png" [routerLink]="['/list', one.id]">
+            <img *ngIf="one.type == 'texte' " src="../assets/texte.png" [routerLink]="['/file', one.id]">
+            <img *ngIf="one.type == 'image' " src="../assets/image.png" [routerLink]="['/file', one.id]">
+            <p *ngIf="changeName != one.id" (dblclick)="changeNameFn(one.id)">{{ one.name }}</p>
+            <easdir-objet-name
+            *ngIf="changeName == one.id"
+            name="{{ one.name }}"
+            (cancel)="changeNameFn('')"
+            (save)="saveName($event,one.id)"
+            >
+            </easdir-objet-name>
+            <button *ngIf="changeName != one.id && one.id != this.objet?.idParent"(click)="remove(one)" id="button-suppr" type="button">Supprimer</button>
+          </article>
+        </ng-container>
 
-        <easdir-dossier-form
+        <easdir-objet-form
         *ngIf="this.AddDossierMode"
+        type="dossier"
+        idParent="{{ this.objet?.id }}"
         (cancel)="ToggleAddDossierMode()"
         (save)="saveDossier($event)">
-        </easdir-dossier-form>
+        </easdir-objet-form>
 
-        <article
-          *ngFor="let texte of textes$ | async"
-          [routerLink]="['/texte', texte.id]">
-            <img src="../assets/texte.png">
-            <p>{{ texte.name }}</p>
-        </article>
+        <easdir-objet-form
+        *ngIf="this.AddImageMode"
+        type="image"
+        idParent="{{ this.objet?.id }}"
+        (cancel)="ToggleAddImageMode()"
+        (save)="saveImage($event)">
+        </easdir-objet-form>
 
-        <easdir-texte-form
-          *ngIf="this.AddTexteMode"
-          (cancel)="ToggleAddTexteMode()"
-          (save)="saveTexte($event)">
-        </easdir-texte-form>
-
-        <article
-          *ngFor="let image of images$ | async"
-          [routerLink]="['/image', image.id]">
-            <img src="../assets/image.png">
-            <p>{{ image.name }}</p>
-        </article>
-
-        <easdir-image-form
-          *ngIf="this.AddImageMode"
-          (cancel)="ToggleAddImageMode()"
-          (save)="saveImage($event)">
-        </easdir-image-form>
+        <easdir-objet-form
+        *ngIf="this.AddTexteMode"
+        type="texte"
+        idParent="{{ this.objet?.id }}"
+        (cancel)="ToggleAddTexteMode()"
+        (save)="saveTexte($event)">
+        </easdir-objet-form>
       </div>
     </div>
   `,
@@ -66,51 +72,86 @@ import { ImageService } from './image.service';
   ]
 })
 export class ElementsListComponent implements OnInit {
-  dossiers$: Observable<Dossier[]> = this.DossierService.getListDossier();
-  textes$: Observable<Texte[]> = this.TexteService.getListTexte();
-  images$: Observable<Image[]> = this.ImageService.getListImage();
-
+  objet?: Objet;
+  objets$: Observable<Objet[]> = this.ObjetService.getList();
   AddTexteMode: boolean = false;
   AddDossierMode: boolean = false;
   AddImageMode: boolean = false;
+  changeName: string = ''
 
-  constructor(private DossierService : DossierService, private TexteService : TexteService, private ImageService : ImageService) {
+  constructor(private ObjetService: ObjetService,
+    private DataService: DataService,
+    route: ActivatedRoute,
+    private router: Router) {
+    route.paramMap.subscribe(
+      (paramMap: ParamMap) => {
+        const id = paramMap.get('dossierId');
+        if (id != null) {
+          this.ObjetService.get(id)
+            .subscribe(
+              dossier =>
+                this.objet = dossier
+              ,
+              () => router.navigate(['/list/'])
+            )
+        }
+      }
+    )
   }
 
+  oky(data: any) {
+    console.log(data)
+    return true
+  }
   ngOnInit(): void {
   }
 
-  saveDossier(dossier : Dossier) {
-    this.DossierService.addDossier(dossier);
+  saveDossier(dossier: Objet) {
+    this.ObjetService.add(dossier);
     this.ToggleAddDossierMode();
   }
 
-  saveImage(image : Image) {
-    this.ImageService.addImage(image);
+  saveImage(image: Objet) {
+    this.ObjetService.add(image);
+    this.DataService.add({id:image.id,contenue:''})
     this.ToggleAddImageMode();
   }
 
-  saveTexte(texte : Texte) {
-    this.TexteService.addTexte(texte);
+  saveTexte(texte: Objet) {
+    this.ObjetService.add(texte);
+    this.DataService.add({id:texte.id,contenue:''})
     this.ToggleAddTexteMode();
   }
 
-  ToggleAddDossierMode(){
+  saveName(name: string, id: string) {
+    this.ObjetService.update(name, id)
+    this.changeNameFn('')
+  }
+
+  ToggleAddDossierMode() {
     this.AddTexteMode = false;
     this.AddImageMode = false;
     this.AddDossierMode = !this.AddDossierMode;
   }
 
-  ToggleAddImageMode(){
+  ToggleAddImageMode() {
     this.AddDossierMode = false;
     this.AddTexteMode = false;
     this.AddImageMode = !this.AddImageMode;
   }
 
-  ToggleAddTexteMode(){
+  ToggleAddTexteMode() {
     this.AddDossierMode = false;
     this.AddImageMode = false;
     this.AddTexteMode = !this.AddTexteMode;
   }
 
+  remove(objet: Objet) {
+    this.ObjetService.delete(objet)
+    this.DataService.delete({id:objet.id,contenue:''})
+  }
+
+  changeNameFn(id: string) {
+    this.changeName = id;
+  }
 }
