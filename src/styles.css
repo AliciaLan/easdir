@@ -153,6 +153,11 @@ button {
   height: 20px;
 }
 
+#display-data {
+  max-width: 500px;
+  max-height: 500px;
+}
+
 #display-edit-form form {
   display: flex;
   flex-direction: column;

@@ -10,7 +10,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
   template: `
     <div id="contenu">
       <div id="contenu-titre">
-        <h2>{{this.objet?.name}}</h2>
+        <h2>{{ this.objet?.name }}</h2>
       </div>
 
       <div id="contenu-button">
@@ -20,50 +20,49 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
       </div>
 
       <div id="contenu-elements">
-      <article class="dossier" *ngIf="this.objet?.id != ''">
-            <img src="../assets/dossier.png" [routerLink]="['/list', objet?.idParent]">
-            <p>back</p>
-          </article>
-        <ng-container
-          *ngFor="let one of objets$ | async " >
+        <article class="dossier" *ngIf="this.objet?.id != ''">
+          <img src="../assets/dossier.png" [routerLink]="['/list', objet?.idParent]">
+          <p>Retour</p>
+        </article>
+
+        <ng-container *ngFor="let one of objets$ | async">
           <article class="dossier" *ngIf="one.idParent === this.objet?.id">
-            <img *ngIf="one.type == 'dossier' " src="../assets/dossier.png" [routerLink]="['/list', one.id]">
-            <img *ngIf="one.type == 'texte' " src="../assets/texte.png" [routerLink]="['/file', one.id]">
-            <img *ngIf="one.type == 'image' " src="../assets/image.png" [routerLink]="['/file', one.id]">
+            <img *ngIf="one.type == 'dossier'" src="../assets/dossier.png" [routerLink]="['/list', one.id]">
+            <img *ngIf="one.type == 'texte'" src="../assets/texte.png" [routerLink]="['/file', one.id]">
+            <img *ngIf="one.type == 'image'" src="../assets/image.png" [routerLink]="['/file', one.id]">
             <p *ngIf="changeName != one.id" (dblclick)="changeNameFn(one.id)">{{ one.name }}</p>
             <easdir-objet-name
-            *ngIf="changeName == one.id"
-            name="{{ one.name }}"
-            (cancel)="changeNameFn('')"
-            (save)="saveName($event,one.id)"
-            >
+              *ngIf="changeName == one.id"
+              name="{{ one.name }}"
+              (cancel)="changeNameFn('')"
+              (save)="saveName($event, one.id)">
             </easdir-objet-name>
-            <button *ngIf="changeName != one.id && one.id != this.objet?.idParent"(click)="remove(one)" id="button-suppr" type="button">Supprimer</button>
+            <button *ngIf="changeName != one.id && one.id != this.objet?.idParent" (click)="remove(one)" id="button-suppr" type="button">Supprimer</button>
           </article>
         </ng-container>
 
         <easdir-objet-form
-        *ngIf="this.AddDossierMode"
-        type="dossier"
-        idParent="{{ this.objet?.id }}"
-        (cancel)="ToggleAddDossierMode()"
-        (save)="saveDossier($event)">
+          *ngIf="this.AddDossierMode"
+          type="dossier"
+          idParent="{{ this.objet?.id }}"
+          (cancel)="ToggleAddDossierMode()"
+          (save)="saveDossier($event)">
         </easdir-objet-form>
 
         <easdir-objet-form
-        *ngIf="this.AddImageMode"
-        type="image"
-        idParent="{{ this.objet?.id }}"
-        (cancel)="ToggleAddImageMode()"
-        (save)="saveImage($event)">
+          *ngIf="this.AddImageMode"
+          type="image"
+          idParent="{{ this.objet?.id }}"
+          (cancel)="ToggleAddImageMode()"
+          (save)="saveImage($event)">
         </easdir-objet-form>
 
         <easdir-objet-form
-        *ngIf="this.AddTexteMode"
-        type="texte"
-        idParent="{{ this.objet?.id }}"
-        (cancel)="ToggleAddTexteMode()"
-        (save)="saveTexte($event)">
+          *ngIf="this.AddTexteMode"
+          type="texte"
+          idParent="{{ this.objet?.id }}"
+          (cancel)="ToggleAddTexteMode()"
+          (save)="saveTexte($event)">
         </easdir-objet-form>
       </div>
     </div>
@@ -77,33 +76,34 @@ export class ElementsListComponent implements OnInit {
   AddTexteMode: boolean = false;
   AddDossierMode: boolean = false;
   AddImageMode: boolean = false;
-  changeName: string = ''
+  changeName: string = '';
 
-  constructor(private ObjetService: ObjetService,
-    private DataService: DataService,
-    route: ActivatedRoute,
-    private router: Router) {
-    route.paramMap.subscribe(
-      (paramMap: ParamMap) => {
-        const id = paramMap.get('dossierId');
-        if (id != null) {
-          this.ObjetService.get(id)
-            .subscribe(
-              dossier =>
-                this.objet = dossier
-              ,
-              () => router.navigate(['/list/'])
-            )
-        }
+  constructor(private ObjetService: ObjetService, private DataService: DataService, route: ActivatedRoute, private router: Router) {
+    route.paramMap.subscribe((paramMap: ParamMap) => {
+      const id = paramMap.get('dossierId');
+      if (id != null) {
+        this.ObjetService.get(id)
+          .subscribe(dossier => this.objet = dossier,
+            () => router.navigate(['/list/'])
+          )
       }
-    )
+    })
+  }
+
+  ngOnInit(): void { }
+
+  changeNameFn(id: string) {
+    this.changeName = id;
   }
 
   oky(data: any) {
     console.log(data)
     return true
   }
-  ngOnInit(): void {
+
+  remove(objet: Objet) {
+    this.ObjetService.delete(objet)
+    this.DataService.delete({id:objet.id,contenue:''})
   }
 
   saveDossier(dossier: Objet) {
@@ -117,15 +117,15 @@ export class ElementsListComponent implements OnInit {
     this.ToggleAddImageMode();
   }
 
-  saveTexte(texte: Objet) {
-    this.ObjetService.add(texte);
-    this.DataService.add({id:texte.id,contenue:''})
-    this.ToggleAddTexteMode();
-  }
-
   saveName(name: string, id: string) {
     this.ObjetService.update(name, id)
     this.changeNameFn('')
+  }
+
+  saveTexte(texte: Objet) {
+    this.ObjetService.add(texte);
+    this.DataService.add({id:texte.id, contenue:''})
+    this.ToggleAddTexteMode();
   }
 
   ToggleAddDossierMode() {
@@ -144,14 +144,5 @@ export class ElementsListComponent implements OnInit {
     this.AddDossierMode = false;
     this.AddImageMode = false;
     this.AddTexteMode = !this.AddTexteMode;
-  }
-
-  remove(objet: Objet) {
-    this.ObjetService.delete(objet)
-    this.DataService.delete({id:objet.id,contenue:''})
-  }
-
-  changeNameFn(id: string) {
-    this.changeName = id;
   }
 }

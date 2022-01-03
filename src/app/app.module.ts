@@ -10,9 +10,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ObjetFormComponent } from './objet-form.component';
 import { ObjetNameComponent } from './objet-name.component';
 import { ObjetEditFormComponent } from './file-edit-form.component';
-//import { ImageFormComponent } from './image-form.component';
-//import { ImageEditFormComponent } from './image-edit-form.component';
-//import { ImageDisplayComponent } from './image-display.component';
 
 @NgModule({
   declarations: [

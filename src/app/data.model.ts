@@ -1,4 +1,4 @@
 export interface Data {
-  id:string;
-  contenue:string;
+  id: string;
+  contenue: string;
 }

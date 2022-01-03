@@ -46,55 +46,44 @@ export class ObjetDisplayComponent implements OnInit {
   data?: Data;
   EditMode: boolean = false;
 
-  constructor(
-    private ObjetService: ObjetService,
-    private DataService: DataService,
-    route: ActivatedRoute,
-    private router: Router) {
-    route.paramMap.subscribe(
-      (paramMap: ParamMap) => {
-        const id = paramMap.get('fileId');
-        if (id) {
-          ObjetService.get(id)
-            .subscribe(
-              obj => {this.objet = obj},
-              () => router.navigate(['/list'])
-            )
-            DataService.get(id)
-            .subscribe(
-              obj => {this.data = obj},
-              () => router.navigate(['/list'])
-            )
-        }
+  constructor(private ObjetService: ObjetService, private DataService: DataService, route: ActivatedRoute, private router: Router) {
+    route.paramMap.subscribe((paramMap: ParamMap) => {
+      const id = paramMap.get('fileId');
+      if (id) {
+        ObjetService.get(id)
+          .subscribe( obj => this.objet = obj,
+            () => router.navigate(['/list'])
+          )
+        DataService.get(id)
+          .subscribe(obj => this.data = obj,
+            () => router.navigate(['/list'])
+          )
       }
-    )
+    })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   backToList() : void {
-      this.router.navigate(['/list/' + this.objet?.idParent ]);
+      this.router.navigate(['/list/' + this.objet?.idParent]);
   }
 
   delete() : void {
     if(this.objet)
       this.ObjetService.delete(this.objet);
     if(this.data)
-      this.DataService.delete(this.data)
+      this.DataService.delete(this.data);
     this.backToList();
   }
 
-  saveFile(dual: { name: string; data: any; }) {
-    if(this.objet)
-    {
-      this.objet.name = dual.name
-      this.ObjetService.update(this.objet.name,this.objet.id);
+  saveFile(dual: {name: string; data: any;}) {
+    if(this.objet) {
+      this.objet.name = dual.name;
+      this.ObjetService.update(this.objet.name, this.objet.id);
     }
-    if(this.data)
-    {
-      this.data.contenue = dual.data
-      this.DataService.update(this.data)
+    if(this.data) {
+      this.data.contenue = dual.data;
+      this.DataService.update(this.data);
     }
     this.backToList();
   }
@@ -102,5 +91,4 @@ export class ObjetDisplayComponent implements OnInit {
   ToggleEdit() {
     this.EditMode = !this.EditMode;
   }
-
 }

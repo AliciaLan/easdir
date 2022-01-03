@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
       <form (ngSubmit)="submit()" [formGroup]="fileForm">
         <input id="display-name" formControlName="name" placeholder="Nom">
         <input id="display-data" formControlName="data" placeholder="data">
+
         <div>
           <button type="submit" [disabled]="fileForm.invalid">Modifier</button>
           <button type="button" (click)="cancelForm()">Annuler</button>
@@ -39,6 +40,10 @@ export class ObjetEditFormComponent implements OnInit {
     this.fileForm.get('data')?.setValue(this.data);
   }
 
+  cancelForm() {
+    this.cancel.emit();
+  }
+
   submit() {
     const fileToSave = {
       name: this.fileForm.get('name')?.value,
@@ -47,9 +52,4 @@ export class ObjetEditFormComponent implements OnInit {
 
     this.save.emit(fileToSave);
   }
-
-  cancelForm() {
-    this.cancel.emit();
-  }
-
 }

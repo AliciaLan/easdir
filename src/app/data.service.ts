@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Data } from './data.model';
-import { IdService } from './id.service';
 import { Observable} from 'rxjs';
 
 @Injectable({
@@ -11,8 +10,7 @@ import { Observable} from 'rxjs';
 export class DataService {
   url: string = environment.apiUrl + 'data/';
 
-  constructor(private idService : IdService, private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   add(data : Data) : void {
     this.http.post(this.url, data).subscribe();

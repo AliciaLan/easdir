@@ -5,9 +5,9 @@ import { ObjetDisplayComponent } from './file-display.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/list/' },
-{ path: 'list', pathMatch: 'full', redirectTo: '/list/' },
+  { path: 'list', pathMatch: 'full', redirectTo: '/list/' },
   { path: 'list/:dossierId', component: ElementsListComponent },
-{ path: 'file/:fileId', component: ObjetDisplayComponent },
+  { path: 'file/:fileId', component: ObjetDisplayComponent },
   { path: 'file', pathMatch: 'full', redirectTo: '/list/' },
 ];
 
