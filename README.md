@@ -1,33 +1,82 @@
-# Easdir
+#  <span style="font: 1.5em 'Forte'; color:rgb(54, 213, 251)">Easdir</span>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
+## Project description
 
-Pour lancer le projet :
-- Se placer à la racine du projet.
-- Lancer `ng serve` dans un terminal.
-- Lancer `json-server db.json` dans un second terminal.
-- Accéder au site dans un navigateur à l'adresse : `http://localhost:4200/`.
+</br>
 
-## Development server
+EasDir (easy directory) is a directory manager. You can add directories, text files and pictures.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+</br>
 
-## Code scaffolding
+This project was carried out by LAN Alicia and MUSOLES Hugo as part of a study project.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+</br>
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## How to use it
 
-## Running unit tests
+</br>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Access the application :**
+- Launch two terminals at the root of the easdir project.
+- Launch `ng serve` in the first one.
+- Launch `json-server db.json` in the second one.
+- Open a browser and go to `http://localhost:4200/`.
 
-## Running end-to-end tests
+</br>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**Add an element :**   
+To add a new directory, text file or picture, you have to click on the corresponding button and give a name to your element.  
+Then you can validate or cancel its addition.  
 
-## Further help
+<span style="color:red">/!\ </span> An addition does not modify the content of the text file or the url of the picture. 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+</br>
+
+**Display an element :**  
+To display details of a text file or a picture, you have to click on the element you want to see. It will open a new page with all information about it.  
+In this page, you can delete or edit the element.
+
+You can see the content of a directory by cliking on it in the list page.
+
+</br>
+
+**Edit an element :**  
+To edit a text file or a picture, you have differents solutions :
+- Edit name : (*In the list page*)
+  - Double-click on the element's name.
+  - Type a new name.
+- Edit name and content : (*In the detail page*)
+  - Click on the edit button.
+  - Type a new name and a new content (content can be empty). The content of a picture is an url.
+
+To edit a directory, you can double-click on its name and write a new one.  
+
+Then you can validate or cancel its edition. 
+
+</br>
+
+**Delete an element :**  
+To delete an element, you have differents solutions : 
+- In the list page : click on the red button under its name.
+- In the detail page (except for directories) : click on the red button at the top right.
+
+If you delete a directory, it will also delete all elements it contains.  
+
+<span style="color:red">/!\ </span> This action is irrevocable.
+
+</br>
+
+---
+
+## How to install it 
+
+</br>
+
+To run this project, you have to install :
+- nodeJS
+- Angular (project generated in version 12.2.9)
+- typescript
+- json-server
