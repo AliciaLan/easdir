@@ -5,7 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   selector: 'easdir-file-edit-form',
   template: `
     <div id="display-edit-form">
-      <form (ngSubmit)="submit()" [formGroup]="fileForm">
+      <form (ngSubmit)="submit()" [formGroup]="fileForm" enctype="text/plain">
         <input id="display-name" formControlName="name" placeholder="{{ 'name' | translate }}">
         <input id="display-data" formControlName="data" placeholder="{{ 'content' | translate }}">
 

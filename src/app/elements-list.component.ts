@@ -21,23 +21,31 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
       <div id="contenu-elements">
         <article class="dossier" *ngIf="this.objet?.id != ''">
-          <img src="../assets/dossier.png" [routerLink]="['/list', objet?.idParent]">
+          <img src="../assets/dossier.png" alt="{{ 'altDir' | translate }}" [routerLink]="['/list', objet?.idParent]">
           <p>{{ 'back' | translate }}</p>
         </article>
 
         <ng-container *ngFor="let one of objets$ | async">
           <article class="dossier" *ngIf="one.idParent === this.objet?.id">
-            <img *ngIf="one.type == 'dossier'" src="../assets/dossier.png" [routerLink]="['/list', one.id]">
-            <img *ngIf="one.type == 'texte'" src="../assets/texte.png" [routerLink]="['/file', one.id]">
-            <img *ngIf="one.type == 'image'" src="../assets/image.png" [routerLink]="['/file', one.id]">
+            <img *ngIf="one.type == 'dossier'" src="../assets/dossier.png" alt="{{ 'altDir' | translate }}" [routerLink]="['/list', one.id]">
+            <img *ngIf="one.type == 'texte'" src="../assets/texte.png" alt="{{ 'altFile' | translate }}" [routerLink]="['/file', one.id]">
+            <img *ngIf="one.type == 'image'" src="../assets/image.png" alt="{{ 'altPicture' | translate }}" [routerLink]="['/file', one.id]">
             <p *ngIf="changeName != one.id" (dblclick)="changeNameFn(one.id)">{{ one.name }}</p>
+
             <easdir-objet-name
               *ngIf="changeName == one.id"
               name="{{ one.name }}"
               (cancel)="changeNameFn('')"
               (save)="saveName($event, one.id)">
             </easdir-objet-name>
-            <button *ngIf="changeName != one.id && one.id != this.objet?.idParent" (click)="remove(one)" id="button-suppr" type="button">{{ 'delete' | translate }}</button>
+
+            <button
+              *ngIf="changeName != one.id && one.id != this.objet?.idParent"
+              (click)="remove(one)"
+              class="button-suppr"
+              type="button">
+              {{ 'delete' | translate }}
+            </button>
           </article>
         </ng-container>
 

@@ -8,7 +8,7 @@ import { ObjetService } from './objet.service';
   inputs: ['type','idParent'],
   template: `
     <article>
-      <form (ngSubmit)="submit()" [formGroup]="objetForm">
+      <form (ngSubmit)="submit()" [formGroup]="objetForm" enctype="text/plain">
         <img *ngIf="type == 'dossier'" src="../assets/dossier.png">
         <img *ngIf="type == 'image'" src="../assets/image.png">
         <img *ngIf="type == 'texte'" src="../assets/texte.png">

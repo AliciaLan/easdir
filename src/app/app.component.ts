@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'easdir-root',
   template: `
     <header class="{{ classColor }}">
-      <img id="logo" src="../assets/logo.png">
+      <img id="logo" src="../assets/logo.png" alt="{{ 'altLogo' | translate }}">
       <div id="titre">
         <h1>{{ 'title' | translate }} <span id="easdir">EasDir</span></h1>
         <h3>{{ 'description' | translate }}</h3>
@@ -14,16 +14,19 @@ import { TranslateService } from '@ngx-translate/core';
         <div id="colorMode">
           <img
             src="https://cdn-icons-png.flaticon.com/512/39/39857.png"
+            alt="{{ 'altDark' | translate }}"
             *ngIf="this.classColor == 'clair'"
             (click)="ToggleColorMode()">
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD8I86HR8yoWpLCFAqa40BC0yn6AsU9e_pXg&usqp=CAU"
+            alt="{{ 'altLight' | translate }}"
             *ngIf="this.classColor == 'sombre'"
             (click)="ToggleColorMode()">
         </div>
         <div id="langMode">
           <img
             src="{{ 'img_lang' | translate }}"
+            alt="{{ 'altLang' | translate }}"
             (click)="switchLanguage()">
         </div>
       </div>

@@ -18,8 +18,8 @@ import { DataService } from './data.service';
 
       <div *ngIf="!this.EditMode">
         <h2 id="display-name">{{ this.objet?.name }}</h2>
-        <img *ngIf="this.objet?.type == 'image' " id="display-data" src="{{ this.data?.contenue }}">
-        <p *ngIf="this.objet?.type == 'texte' " id="display-data"> {{ this.data?.contenue }} </p>
+        <img *ngIf="this.objet?.type == 'image'" id="display-img" src="{{ this.data?.contenue }}">
+        <p *ngIf="this.objet?.type == 'texte'" id="display-text">{{ this.data?.contenue }}</p>
       </div>
 
       <div>
@@ -34,8 +34,8 @@ import { DataService } from './data.service';
 
       <div id="display-information">
         <h2>{{ 'info' | translate }} :</h2>
-        <p id="display-date">{{ 'dateEdit' | translate }} : {{ this.objet?.last_modification | date:"full" }}</p>
-        <p id="display-date">{{ 'dateAdd' | translate }} : {{ this.objet?.creation | date:"full" }}</p>
+        <p>{{ 'dateEdit' | translate }} : {{ this.objet?.last_modification | date:"full" }}</p>
+        <p>{{ 'dateAdd' | translate }} : {{ this.objet?.creation | date:"full" }}</p>
       </div>
     </div>
   `,
