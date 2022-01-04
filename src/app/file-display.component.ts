@@ -10,7 +10,7 @@ import { DataService } from './data.service';
   selector: 'easdir-file-display',
   template: `
     <div id="display">
-      <div id="display-button">
+      <div id="display-button" >
         <button (click)="backToList()">{{ 'back' | translate }}</button>
         <button *ngIf="!this.EditMode" (click)="ToggleEdit()" id="button-edit" type="button">{{ 'edit' | translate }}</button>
         <button (click)="delete()" id="button-suppr" type="button">{{ 'delete' | translate }}</button>
@@ -19,7 +19,7 @@ import { DataService } from './data.service';
       <div *ngIf="!this.EditMode">
         <h2 id="display-name">{{ this.objet?.name }}</h2>
         <img *ngIf="this.objet?.type == 'image'" id="display-img" src="{{ this.data?.contenue }}">
-        <p *ngIf="this.objet?.type == 'texte'" id="display-text">{{ this.data?.contenue }}</p>
+        <p *ngIf="this.objet?.type == 'texte'" id="display-text"> <pre>{{ this.data?.contenue }}</pre>
       </div>
 
       <div>

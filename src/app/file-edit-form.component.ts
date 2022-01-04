@@ -7,8 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     <div id="display-edit-form">
       <form (ngSubmit)="submit()" [formGroup]="fileForm" enctype="text/plain">
         <input id="display-name" formControlName="name" placeholder="{{ 'name' | translate }}">
-        <input id="display-data" formControlName="data" placeholder="{{ 'content' | translate }}">
-
+        <textarea id="display-data" formControlName="data" placeholder="{{ 'content' | translate }}" autocomplete="off" rows="{{ this.data?.split('\n')?.length }}" ></textarea>
         <div>
           <button type="submit" [disabled]="fileForm.invalid">{{ 'edit' | translate }}</button>
           <button type="button" (click)="cancelForm()">{{ 'cancel' | translate }}</button>
@@ -16,8 +15,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
       </form>
     </div>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class ObjetEditFormComponent implements OnInit {
   @Input() name?: string;

@@ -15,6 +15,16 @@
   color: white;
 }
 
+.clair + * > *{
+  background-color: white;
+  color: black;
+}
+
+.sombre + * > *{
+  background-color: rgba(0, 0, 0, 0.700);
+  color: white;
+}
+
 
 /* HEADER */
 header {
@@ -194,4 +204,10 @@ footer {
 .text-footer {
   margin: 15px;
   text-align: center;
+}
+
+textarea
+{
+  resize: none;
+  overflow: auto;
 }

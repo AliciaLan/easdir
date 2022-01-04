@@ -62,7 +62,7 @@
       "type": "texte",
       "idParent": "7f224d3a-7009-4c98-b54e-2c6803961dae",
       "creation": 1641303049786,
-      "last_modification": 1641303064084
+      "last_modification": 1641333105948
     },
     {
       "id": "3991c25f-c6c9-467a-9022-82e3f37ea490",
@@ -71,6 +71,14 @@
       "idParent": "7f224d3a-7009-4c98-b54e-2c6803961dae",
       "creation": 1641303053487,
       "last_modification": 1641303075258
+    },
+    {
+      "id": "a176d38b-e73b-475c-bd23-9c1395b2a0e7",
+      "name": "README",
+      "type": "texte",
+      "idParent": "",
+      "creation": 1641333129709,
+      "last_modification": 1641333402513
     }
   ],
   "data": [
@@ -121,6 +129,10 @@
     {
       "id": "3991c25f-c6c9-467a-9022-82e3f37ea490",
       "contenue": "à faire aussi ..."
+    },
+    {
+      "id": "a176d38b-e73b-475c-bd23-9c1395b2a0e7",
+      "contenue": "#  <span style=\"font: 1.5em 'Forte'; color:rgb(54, 213, 251)\">Easdir</span>\n\n## Project description\n\nEasDir (easy directory) is a directory manager. You can add directories, text files and pictures.\n\n</br>\n\nThis project was carried out by LAN Alicia and MUSOLES Hugo as part of a study project.\n\n</br>\n\n---\n\n## How to use it\n\n**Access the application :**\n- Launch two terminals at the root of the easdir project.\n- Launch `ng serve` in the first one.\n- Launch `json-server db.json` in the second one.\n- Open a browser and go to `http://localhost:4200/`.\n\n</br>\n\n**Add an element :**   \nTo add a new directory, text file or picture, you have to click on the corresponding button and give a name to your element.  \nThen you can validate or cancel its addition.  \n\n<span style=\"color:red\">/!\\ </span> An addition does not modify the content of the text file or the url of the picture. \n\n\n</br>\n\n**Display an element :**  \nTo display details of a text file or a picture, you have to click on the element you want to see. It will open a new page with all information about it.  \nIn this page, you can delete or edit the element.\n\nYou can see the content of a directory by cliking on it in the list page.\n\n</br>\n\n**Edit an element :**  \nTo edit a text file or a picture, you have differents solutions :\n- Edit name : (*In the list page*)\n  - Double-click on the element's name.\n  - Type a new name.\n- Edit name and content : (*In the detail page*)\n  - Click on the edit button.\n  - Type a new name and a new content (content can be empty). The content of a picture is an url.\n\nTo edit a directory, you can double-click on its name and write a new one.  \n\nThen you can validate or cancel its edition. \n\n</br>\n\n**Delete an element :**  \nTo delete an element, you have differents solutions : \n- In the list page : click on the red button under its name.\n- In the detail page (except for directories) : click on the red button at the top right.\n\nIf you delete a directory, it will also delete all elements it contains.  \n\n<span style=\"color:red\">/!\\ </span> This action is irrevocable.\n\n</br>\n\n**Additionnal functionnalities :**\n- Color Mode (light or dark)\n- Multi-language (english or french)\n\n</br>\n\n---\n\n## How to install it \n\nTo run this project, you have to install :\n- nodeJS\n- Angular (project generated in version 12.2.9)\n- typescript\n- json-server\n- ngx-translate (`npm i @ngx-translate/core@13.0.0 --save` and `npm i @ngx-translate/http-loader@6.0.0 --save`) \n"
     }
   ]
 }
