@@ -7,7 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     <div id="display-edit-form">
       <form (ngSubmit)="submit()" [formGroup]="fileForm" enctype="text/plain">
         <input id="display-name" formControlName="name" placeholder="{{ 'name' | translate }}">
-        <textarea id="display-data" formControlName="data" placeholder="{{ 'content' | translate }}" autocomplete="off" rows="{{ this.data?.split('\n')?.length }}" ></textarea>
+        <textarea id="display-data" formControlName="data" placeholder="{{ 'content' | translate }}" autocomplete="off" rows="{{ this.fileForm.get('data')?.value.split('\n')?.length }}" ></textarea>
         <div>
           <button type="submit" [disabled]="fileForm.invalid">{{ 'edit' | translate }}</button>
           <button type="button" (click)="cancelForm()">{{ 'cancel' | translate }}</button>

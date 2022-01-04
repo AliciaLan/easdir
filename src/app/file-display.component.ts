@@ -19,7 +19,7 @@ import { DataService } from './data.service';
       <div *ngIf="!this.EditMode">
         <h2 id="display-name">{{ this.objet?.name }}</h2>
         <img *ngIf="this.objet?.type == 'image'" id="display-img" src="{{ this.data?.contenue }}">
-        <p *ngIf="this.objet?.type == 'texte'" id="display-text"> <pre>{{ this.data?.contenue }}</pre>
+        <pre *ngIf="this.objet?.type == 'texte'" id="display-text">{{ this.data?.contenue }}</pre>
       </div>
 
       <div>
