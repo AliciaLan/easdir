@@ -12,19 +12,19 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  add(data : Data) : void {
+  add(data: Data): void {
     this.http.post(this.url, data).subscribe();
   }
 
-  update(data : Data) : void {
+  update(data: Data): void {
     this.http.put(this.url + data.id, data).subscribe();
   }
 
-  delete(data: Data) : void {
+  delete(data: Data): void {
     this.http.delete(this.url + data.id).subscribe();
   }
 
-  get(id:string): Observable<Data>{
+  get(id:string): Observable<Data> {
     return this.http.get<Data>(this.url + id);
   }
 }

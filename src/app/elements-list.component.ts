@@ -92,50 +92,50 @@ export class ElementsListComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  changeNameFn(id: string) {
+  changeNameFn(id: string): void {
     this.changeName = id;
   }
 
-  remove(objet: Objet) {
-    this.ObjetService.delete(objet)
-    this.DataService.delete({id:objet.id,contenue:''})
+  remove(objet: Objet): void {
+    this.ObjetService.delete(objet);
+    this.DataService.delete({id: objet.id, contenue: ''});
   }
 
-  saveDossier(dossier: Objet) {
+  saveDossier(dossier: Objet): void {
     this.ObjetService.add(dossier);
     this.ToggleAddDossierMode();
   }
 
-  saveImage(image: Objet) {
+  saveImage(image: Objet): void {
     this.ObjetService.add(image);
-    this.DataService.add({id:image.id,contenue:''})
+    this.DataService.add({id: image.id, contenue: ''});
     this.ToggleAddImageMode();
   }
 
-  saveName(name: string, id: string) {
-    this.ObjetService.update(name, id)
-    this.changeNameFn('')
+  saveName(name: string, id: string): void {
+    this.ObjetService.update(name, id);
+    this.changeNameFn('');
   }
 
-  saveTexte(texte: Objet) {
+  saveTexte(texte: Objet): void {
     this.ObjetService.add(texte);
-    this.DataService.add({id:texte.id, contenue:''})
+    this.DataService.add({id: texte.id, contenue: ''});
     this.ToggleAddTexteMode();
   }
 
-  ToggleAddDossierMode() {
+  ToggleAddDossierMode(): void {
     this.AddTexteMode = false;
     this.AddImageMode = false;
     this.AddDossierMode = !this.AddDossierMode;
   }
 
-  ToggleAddImageMode() {
+  ToggleAddImageMode(): void {
     this.AddDossierMode = false;
     this.AddTexteMode = false;
     this.AddImageMode = !this.AddImageMode;
   }
 
-  ToggleAddTexteMode() {
+  ToggleAddTexteMode(): void {
     this.AddDossierMode = false;
     this.AddImageMode = false;
     this.AddTexteMode = !this.AddTexteMode;

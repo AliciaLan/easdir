@@ -29,7 +29,7 @@ export class ObjetFormComponent implements OnInit {
   @Output() cancel = new EventEmitter();
 
   type?: string;
-  idParent?:string;
+  idParent?: string;
   objetForm: FormGroup;
 
   constructor(private service: ObjetService) {
@@ -42,11 +42,11 @@ export class ObjetFormComponent implements OnInit {
     this.objetForm.get('name')?.setValue(this.objet?.name);
   }
 
-  cancelForm() {
+  cancelForm(): void {
     this.cancel.emit();
   }
 
-  submit() {
+  submit(): void {
     if(this.type) {
       const tosave: Objet = {
         id: this.objet.id,

@@ -40,11 +40,11 @@ export class ObjetEditFormComponent implements OnInit {
     this.fileForm.get('data')?.setValue(this.data);
   }
 
-  cancelForm() {
+  cancelForm(): void {
     this.cancel.emit();
   }
 
-  submit() {
+  submit(): void {
     const fileToSave = {
       name: this.fileForm.get('name')?.value,
       data: this.fileForm.get('data')?.value

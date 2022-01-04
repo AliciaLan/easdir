@@ -26,7 +26,7 @@ export class ObjetService {
       });
   }
 
-  create() : Objet {
+  create(): Objet {
     return {
       id: this.idService.getNewId(),
       name: '',
@@ -37,8 +37,8 @@ export class ObjetService {
     }
   }
 
-  edit(objet : Objet):void {
-    objet.last_modification = Date.now()
+  edit(objet: Objet): void {
+    objet.last_modification = Date.now();
     this.http.put(this.url + objet.id, objet)
       .subscribe(data => {
         const objets = this.objets$.getValue();
@@ -53,7 +53,7 @@ export class ObjetService {
       });
   }
 
-  delete(objet: Objet) : void {
+  delete(objet: Objet): void {
     this.http.delete(this.url + objet.id)
       .subscribe(data => {
         const objets = this.objets$.getValue();
@@ -70,8 +70,7 @@ export class ObjetService {
       });
   }
 
-  update(name: string, id: string)
-  {
+  update(name: string, id: string): void {
     this.http.patch(this.url + id, {name: name, last_modification:Date.now()})
     .subscribe(data => {
       const objets = this.objets$.getValue();
@@ -86,14 +85,14 @@ export class ObjetService {
     });
   }
 
-  get(id?: string) : Observable<Objet> {
+  get(id?: string): Observable<Objet> {
     if(id && id != 'null')
       return this.http.get<Objet>(this.url + id);
     else
       return new Observable(od => od.next({id:'', name:'Dossier racine', type:'dossier', last_modification:0, creation:0, idParent:''}));
   }
 
-  getList() : BehaviorSubject<Objet[]> {
+  getList(): BehaviorSubject<Objet[]> {
     return this.objets$;
   }
 }

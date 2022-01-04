@@ -65,11 +65,11 @@ export class ObjetDisplayComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  backToList() : void {
+  backToList(): void {
       this.router.navigate(['/list/' + this.objet?.idParent]);
   }
 
-  delete() : void {
+  delete(): void {
     if(this.objet)
       this.ObjetService.delete(this.objet);
     if(this.data)
@@ -77,7 +77,7 @@ export class ObjetDisplayComponent implements OnInit {
     this.backToList();
   }
 
-  saveFile(dual: {name: string; data: any;}) {
+  saveFile(dual: {name: string; data: any;}): void {
     if(this.objet) {
       this.objet.name = dual.name;
       this.ObjetService.update(this.objet.name, this.objet.id);
@@ -89,7 +89,7 @@ export class ObjetDisplayComponent implements OnInit {
     this.ToggleEdit();
   }
 
-  ToggleEdit() {
+  ToggleEdit(): void {
     this.EditMode = !this.EditMode;
   }
 }

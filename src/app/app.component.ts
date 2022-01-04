@@ -40,24 +40,24 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   classColor: string = "clair";
-  title = 'EasDir';
+  title: string = 'EasDir';
 
-  constructor(public translate : TranslateService) {
+  constructor(public translate: TranslateService) {
     translate.addLangs(['fr', 'en']);
     translate.setDefaultLang('fr');
     translate.use(translate.getBrowserLang())
   }
 
-  switchLanguage(){
-    this.translate.use(
-      this.translate.getLangs()[
-        (this.translate.getLangs().indexOf(
-          this.translate.currentLang)+1
-        )%this.translate.getLangs().length
-      ]);
+  switchLanguage(): string {
+    let nextLang: string = this.translate.getLangs()[
+      (this.translate.getLangs().indexOf(this.translate.currentLang)+1)%this.translate.getLangs().length
+    ];
+    this.translate.use(nextLang);
+
+    return nextLang;
   }
 
-  ToggleColorMode() {
+  ToggleColorMode(): void {
     if(this.classColor == "clair") {
       this.classColor = "sombre";
     } else {

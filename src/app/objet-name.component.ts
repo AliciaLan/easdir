@@ -33,11 +33,11 @@ export class ObjetNameComponent implements OnInit {
     this.objetForm.get('name')?.setValue(this.name);
   }
 
-  cancelForm() {
+  cancelForm(): void {
     this.cancel.emit();
   }
 
-  submit() {
+  submit(): void {
     if(this.name) {
       const tosave: string = this.objetForm.get('name')?.value;
       this.save.emit(tosave);
