@@ -86,7 +86,7 @@ export class ObjetDisplayComponent implements OnInit {
       this.data.contenue = dual.data;
       this.DataService.update(this.data);
     }
-    this.backToList();
+    this.ToggleEdit();
   }
 
   ToggleEdit() {
