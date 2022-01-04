@@ -14,15 +14,15 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
       </div>
 
       <div id="contenu-button">
-        <button (click)="ToggleAddDossierMode()" type="button">Ajouter un dossier</button>
-        <button (click)="ToggleAddTexteMode()" type="button">Ajouter un fichier texte</button>
-        <button (click)="ToggleAddImageMode()" type="button">Ajouter une image</button>
+        <button (click)="ToggleAddDossierMode()" type="button">{{ 'addDir' | translate }}</button>
+        <button (click)="ToggleAddTexteMode()" type="button">{{ 'addFile' | translate }}</button>
+        <button (click)="ToggleAddImageMode()" type="button">{{ 'addPicture' | translate }}</button>
       </div>
 
       <div id="contenu-elements">
         <article class="dossier" *ngIf="this.objet?.id != ''">
           <img src="../assets/dossier.png" [routerLink]="['/list', objet?.idParent]">
-          <p>Retour</p>
+          <p>{{ 'back' | translate }}</p>
         </article>
 
         <ng-container *ngFor="let one of objets$ | async">
@@ -37,7 +37,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
               (cancel)="changeNameFn('')"
               (save)="saveName($event, one.id)">
             </easdir-objet-name>
-            <button *ngIf="changeName != one.id && one.id != this.objet?.idParent" (click)="remove(one)" id="button-suppr" type="button">Supprimer</button>
+            <button *ngIf="changeName != one.id && one.id != this.objet?.idParent" (click)="remove(one)" id="button-suppr" type="button">{{ 'delete' | translate }}</button>
           </article>
         </ng-container>
 
@@ -94,11 +94,6 @@ export class ElementsListComponent implements OnInit {
 
   changeNameFn(id: string) {
     this.changeName = id;
-  }
-
-  oky(data: any) {
-    console.log(data)
-    return true
   }
 
   remove(objet: Objet) {

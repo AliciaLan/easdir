@@ -5,11 +5,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   selector: 'easdir-objet-name',
   template: `
     <form (ngSubmit)="submit()" [formGroup]="objetForm">
-      <input formControlName="name" placeholder="Nom">
+      <input formControlName="name" placeholder="{{ 'name' | translate }}">
 
       <div id="button-form">
-        <button type="submit" [disabled]="objetForm.invalid">Modifier</button>
-        <button type="button" (click)="cancelForm()">Cancel</button>
+        <button type="submit" [disabled]="objetForm.invalid">{{ 'edit' | translate }}</button>
+        <button type="button" (click)="cancelForm()">{{ 'cancel' | translate }}</button>
       </div>
     </form>
   `,

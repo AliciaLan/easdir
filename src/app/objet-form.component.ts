@@ -12,11 +12,11 @@ import { ObjetService } from './objet.service';
         <img *ngIf="type == 'dossier'" src="../assets/dossier.png">
         <img *ngIf="type == 'image'" src="../assets/image.png">
         <img *ngIf="type == 'texte'" src="../assets/texte.png">
-        <input formControlName="name" placeholder="Nom">
+        <input formControlName="name" placeholder="{{ 'name' | translate }}">
 
         <div id="button-form">
-          <button type="submit" [disabled]="objetForm.invalid">Ajouter</button>
-          <button type="button" (click)="cancelForm()">Cancel</button>
+          <button type="submit" [disabled]="objetForm.invalid">{{ 'add' | translate }}</button>
+          <button type="button" (click)="cancelForm()">{{ 'cancel' | translate }}</button>
         </div>
       </form>
     </article>

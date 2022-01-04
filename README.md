@@ -2,8 +2,6 @@
 
 ## Project description
 
-</br>
-
 EasDir (easy directory) is a directory manager. You can add directories, text files and pictures.
 
 </br>
@@ -15,8 +13,6 @@ This project was carried out by LAN Alicia and MUSOLES Hugo as part of a study p
 ---
 
 ## How to use it
-
-</br>
 
 **Access the application :**
 - Launch two terminals at the root of the easdir project.
@@ -69,14 +65,19 @@ If you delete a directory, it will also delete all elements it contains.
 
 </br>
 
+**Additionnal functionnalities :**
+- Color Mode (light or dark)
+- Multi-language (english or french)
+
+</br>
+
 ---
 
 ## How to install it 
-
-</br>
 
 To run this project, you have to install :
 - nodeJS
 - Angular (project generated in version 12.2.9)
 - typescript
 - json-server
+- ngx-translate (`npm i @ngx-translate/core@13.0.0 --save` and `npm i @ngx-translate/http-loader@6.0.0 --save`) 

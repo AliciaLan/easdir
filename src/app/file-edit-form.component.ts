@@ -6,12 +6,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   template: `
     <div id="display-edit-form">
       <form (ngSubmit)="submit()" [formGroup]="fileForm">
-        <input id="display-name" formControlName="name" placeholder="Nom">
-        <input id="display-data" formControlName="data" placeholder="data">
+        <input id="display-name" formControlName="name" placeholder="{{ 'name' | translate }}">
+        <input id="display-data" formControlName="data" placeholder="{{ 'content' | translate }}">
 
         <div>
-          <button type="submit" [disabled]="fileForm.invalid">Modifier</button>
-          <button type="button" (click)="cancelForm()">Annuler</button>
+          <button type="submit" [disabled]="fileForm.invalid">{{ 'edit' | translate }}</button>
+          <button type="button" (click)="cancelForm()">{{ 'cancel' | translate }}</button>
         </div>
       </form>
     </div>

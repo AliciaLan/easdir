@@ -11,9 +11,9 @@ import { DataService } from './data.service';
   template: `
     <div id="display">
       <div id="display-button">
-        <button (click)="backToList()">Retour</button>
-        <button *ngIf="!this.EditMode" (click)="ToggleEdit()" id="button-edit" type="button">Modifier</button>
-        <button (click)="delete()" id="button-suppr" type="button">Supprimer le fichier</button>
+        <button (click)="backToList()">{{ 'back' | translate }}</button>
+        <button *ngIf="!this.EditMode" (click)="ToggleEdit()" id="button-edit" type="button">{{ 'edit' | translate }}</button>
+        <button (click)="delete()" id="button-suppr" type="button">{{ 'delete' | translate }}</button>
       </div>
 
       <div *ngIf="!this.EditMode">
@@ -33,8 +33,8 @@ import { DataService } from './data.service';
       </div>
 
       <div id="display-information">
-        <h2>Informations :</h2>
-        <p id="display-date">Dernière modification : {{ this.objet?.last_modification | date:"full" }}</p>
+        <h2>{{ 'info' | translate }} :</h2>
+        <p id="display-date">{{ 'dateEdit' | translate }} : {{ this.objet?.last_modification | date:"full" }}</p>
       </div>
     </div>
   `,

@@ -1,0 +1,19 @@
+{
+  "title":"Welcome in",
+  "description":"Your newest directory manager",
+  "footer_description": "WebSite developped with Angular JS as part of a study project.",
+  "footer_credit": "Project carried out by LAN Alicia and MUSOLES Hugo",
+  "img_lang":"https://cdn.pixabay.com/photo/2012/04/23/16/15/flags-38754_1280.png",
+  "add": "Add",
+  "addDir": "Add a directory",
+  "addFile": "Add a text file",
+  "addPicture": "Add a picture",
+  "back": "Back",
+  "delete": "Delete",
+  "edit": "Edit",
+  "cancel": "Cancel",
+  "info": "Information",
+  "dateEdit":"Last modification",
+  "name": "Name",
+  "content": "Text"
+}

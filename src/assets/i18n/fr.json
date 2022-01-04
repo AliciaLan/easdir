@@ -1,0 +1,19 @@
+{
+  "title": "Bienvenue dans",
+  "description": "Votre nouveau gestionnaire de fichier",
+  "footer_description": "Site Web développé en Angular JS dans le cadre d'un projet d'étude.",
+  "footer_credit": "Projet réalisé par LAN Alicia et MUSOLES Hugo",
+  "img_lang":"https://cdn.pixabay.com/photo/2012/04/11/15/19/france-28463_1280.png",
+  "add": "Ajouter",
+  "addDir": "Ajouter un dossier",
+  "addFile": "Ajouter un fichier texte",
+  "addPicture": "Ajouter une image",
+  "back": "Retour",
+  "delete": "Supprimer",
+  "edit": "Modifier",
+  "cancel": "Annuler",
+  "info": "Informations",
+  "dateEdit":"Dernière modification",
+  "name": "Nom",
+  "content": "Texte"
+}
