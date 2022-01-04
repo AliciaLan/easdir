@@ -35,6 +35,7 @@ import { DataService } from './data.service';
       <div id="display-information">
         <h2>{{ 'info' | translate }} :</h2>
         <p id="display-date">{{ 'dateEdit' | translate }} : {{ this.objet?.last_modification | date:"full" }}</p>
+        <p id="display-date">{{ 'dateAdd' | translate }} : {{ this.objet?.creation | date:"full" }}</p>
       </div>
     </div>
   `,

@@ -4,5 +4,6 @@ export interface Objet {
   type: string;
   data?: string;
   last_modification: number;
+  creation: number;
   idParent: string;
 }

@@ -53,6 +53,7 @@ export class ObjetFormComponent implements OnInit {
         ...this.objetForm.value,
         type:this.type,
         idParent:this.idParent,
+        creation: this.objet.creation,
         last_modification: Date.now()
       };
       this.save.emit(tosave);

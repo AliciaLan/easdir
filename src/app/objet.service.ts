@@ -32,6 +32,7 @@ export class ObjetService {
       name: '',
       type:'',
       last_modification: 0,
+      creation: Date.now(),
       idParent: ''
     }
   }
@@ -71,7 +72,7 @@ export class ObjetService {
 
   update(name: string, id: string)
   {
-    this.http.patch(this.url + id, {name: name})
+    this.http.patch(this.url + id, {name: name, last_modification:Date.now()})
     .subscribe(data => {
       const objets = this.objets$.getValue();
       const element = this.objets$.getValue().find(e => e.id === id);
@@ -89,7 +90,7 @@ export class ObjetService {
     if(id && id != 'null')
       return this.http.get<Objet>(this.url + id);
     else
-      return new Observable(od => od.next({id:'', name:'Dossier racine', type:'dossier', last_modification:0, idParent:''}));
+      return new Observable(od => od.next({id:'', name:'Dossier racine', type:'dossier', last_modification:0, creation:0, idParent:''}));
   }
 
   getList() : BehaviorSubject<Objet[]> {
