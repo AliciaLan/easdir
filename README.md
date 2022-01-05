@@ -80,4 +80,4 @@ To run this project, you have to install :
 - Angular (project generated in version 12.2.9)
 - typescript
 - json-server
-- ngx-translate (`npm i @ngx-translate/core@13.0.0 --save` and `npm i @ngx-translate/http-loader@6.0.0 --save`) 
+- all local dependencie (`npm install` and `ng build`) 
