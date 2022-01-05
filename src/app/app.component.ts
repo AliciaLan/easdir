@@ -32,7 +32,7 @@ import { TranslateService } from '@ngx-translate/core';
       </div>
     </header>
 
-    <router-outlet class="{{ classColor }}"></router-outlet>
+    <router-outlet></router-outlet>
 
     <footer class="{{ classColor }}">
       <p class="text-footer">{{ 'footer_description' | translate }}</p>
